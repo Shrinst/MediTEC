@@ -24,8 +24,6 @@ import org.meditec.meditecserver.service.MessageService;
 @Path("messages")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-//@Produces(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
-// Everything about supporting media types in @Produces can be apply to @Consumes
 
 public class MessageResource {
 
@@ -43,20 +41,6 @@ public class MessageResource {
 
 		return messageService.getAllMessages();
 	}
-	
-	/*@GET
-	@Produces(MediaType.TEXT_XML)
-	public List<Message> getXmlMessages(@BeanParam MessageFilterBean filterBean) {
-		if (filterBean.getYear() > 0) {
-			return messageService.getAllMessageForYear(filterBean.getYear());
-		}
-
-		if (filterBean.getStart() >= 0 && filterBean.getSize() > 0) {
-			return messageService.getAllMessagePaginated(filterBean.getStart(), filterBean.getSize());
-		}
-
-		return messageService.getAllMessages();
-	}*/
 
 	@POST
 	public Response addMessage(Message message, @Context UriInfo uriInfo) {
@@ -84,32 +68,11 @@ public class MessageResource {
 	@Path("{messageId}")
 	public Message getMessage(@PathParam("messageId") long messageId, @Context UriInfo uriInfo) {
 		Message message = messageService.getMessage(messageId);
-		message.addLink(getUriForSelf(uriInfo, message), "self");
-		message.addLink(getUriForProfile(uriInfo, message), "profile");
-		message.addLink(getUriForComments(uriInfo, message), "comments");
 		return message;
 	}
 
-	@Path("{messageId}/comments")
-	public CommentResource getCommentResource() {
-		return new CommentResource();
-	}
-
-	private String getUriForSelf(UriInfo uriInfo, Message message) {
-		String uri = uriInfo.getBaseUriBuilder().path(MessageResource.class).path(Long.toString(message.getId()))
-				.build().toString();
-		return uri;
-	}
-
-	private String getUriForProfile(UriInfo uriInfo, Message message) {
-		URI uri = uriInfo.getBaseUriBuilder().path(ProfileResource.class).path(message.getAuthor()).build();
-		return uri.toString();
-	}
-
-	private String getUriForComments(UriInfo uriInfo, Message message) {
-		URI uri = uriInfo.getBaseUriBuilder().path(MessageResource.class)
-				.path(MessageResource.class, "getCommentResource").path(CommentResource.class)
-				.resolveTemplate("messageId", message.getId()).build();
-		return uri.toString();
-	}
+//	@Path("{messageId}/comments")
+//	public CommentResource getCommentResource() {
+//		return new CommentResource();
+//	}	
 }
