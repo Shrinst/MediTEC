@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MediTecClientApp</string>
+    <string name="facebook_app_id">424141524622666</string>
+    <string name="cancel_login">Sesión Cancelada</string>
+    <string name="error_login">Error al Iniciar Sesión</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="info1_register_activity">Bienvenido a MediTEC, esta es una aplicación para cuidar de su salud</string>
+    <string name="info2_register_activity">Presiona el botón Solicitar Correo, para enviar un correo a tu cuenta </string>
+    <string name="info3_register_activity">Una vez lo tengas presiona continuar para escanear el código QR y seguir usando
+    MediTEC</string>
+    <string name="edittext_register_activity">Ingresa Tu Correo Aquí</string>
+    <string name="register_activity_btn1">Enviar Correo</string>
+    <string name="register_activity_btn2">Escanear QR</string>
+    <string name="cancel_qr_scan">Concelaste la operación</string>
+    <string name="addAppoinment">Agregar Cita Médica</string>
+    <string name="removeAppointment">Eliminar Cita Médica</string>
+    <string name="getAllAppointment">Ver todas las citas</string>
+
+</resources>

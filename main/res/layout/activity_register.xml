@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/meditecfondo"
+    tools:context="com.example.aguis.meditecclientapp.RegisterActivity">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/meditecbienvenida"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:id="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvInfo1"
+        android:text="@string/info1_register_activity"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteY="179dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvInfo2"
+        android:text="@string/info2_register_activity"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteY="229dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvInfo3"
+        android:text="@string/info3_register_activity"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteY="262dp"
+        tools:layout_editor_absoluteX="-16dp"
+        android:layout_below="@+id/tvInfo2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSendMail"
+        android:text="@string/register_activity_btn1"
+        android:textColor="@android:color/holo_blue_bright"
+        tools:layout_editor_absoluteY="376dp"
+        tools:layout_editor_absoluteX="238dp"
+        android:layout_above="@+id/btnScanQR"
+        android:layout_alignRight="@+id/btnScanQR"
+        android:layout_alignEnd="@+id/btnScanQR"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnScanQR"
+        android:text="@string/register_activity_btn2"
+        android:textColor="@android:color/holo_blue_bright"
+        tools:layout_editor_absoluteY="447dp"
+        tools:layout_editor_absoluteX="251dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etEnter_eMail"
+        android:hint="@string/edittext_register_activity"
+        android:textColorHint="@color/com_facebook_blue"
+        tools:layout_editor_absoluteY="381dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_alignBaseline="@+id/btnSendMail"
+        android:layout_alignBottom="@+id/btnSendMail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
