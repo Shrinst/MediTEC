@@ -6,6 +6,8 @@ public class Appointment {
 	private String author;
 	private String date;
 	private String patientName;
+	private Appointment _left;
+	private Appointment _right;
 
 	public Appointment() {
 
@@ -49,4 +51,20 @@ public class Appointment {
 	public void setPatientName(String patientName) {
 		this.patientName = patientName;
 	}
+
+	public Appointment get_left() {
+		return _left;
+	}
+
+	public void set_left(Appointment _left) {
+		this._left = _left;
+	}
+
+	public Appointment get_right() {
+		return _right;
+	}
+
+	public void set_right(Appointment _right) {
+		this._right = _right;
+	}	
 }

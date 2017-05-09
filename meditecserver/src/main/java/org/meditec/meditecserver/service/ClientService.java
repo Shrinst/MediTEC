@@ -12,8 +12,8 @@ public class ClientService {
 	private Map<String, Client> clientlist = DataBaseClass.getClientList();
 	
 	public ClientService() {
-		clientlist.put("Daniela", new Client("Daniela", 3245422, "Cartago"));
-		clientlist.put("Gabriel", new Client("Gabriel", 3420242, "Cartago"));
+		clientlist.put("Daniela", new Client("Daniela", 3245422, "Cartago", "geh3wgdwwhwd", true));
+		clientlist.put("Gabriel", new Client("Gabriel", 3420242, "Cartago", "gsheheehe", true));
 	}
 	
 	public List<Client> getAllClient() {

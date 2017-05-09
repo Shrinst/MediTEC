@@ -5,6 +5,8 @@ public class Medicine {
 	private String name;
 	private String effect;
 	private String schedule;
+	private Medicine _left;
+	private Medicine _right;
 	
 	public Medicine() {
 		
@@ -38,5 +40,21 @@ public class Medicine {
 
 	public void setSchedule(String schedule) {
 		this.schedule = schedule;
+	}
+
+	public Medicine get_left() {
+		return _left;
+	}
+
+	public void set_left(Medicine _left) {
+		this._left = _left;
+	}
+
+	public Medicine get_right() {
+		return _right;
+	}
+
+	public void set_right(Medicine _right) {
+		this._right = _right;
 	}
 }

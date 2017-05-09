@@ -5,51 +5,37 @@ import java.util.List;
 
 import org.meditec.meditecserver.database.DataBaseClass;
 import org.meditec.meditecserver.model.ClinicalCase;
-import org.meditec.meditecserver.trees.BinarySearchTree;
+import org.meditec.meditecserver.trees.BinarySearchClinicalTree;
 
 public class ClinicalCaseService {
-
-	// private Map<String, ClinicalCase> clinicalcaselist =
-	// DataBaseClass.getClinicalCaseList();
-	private BinarySearchTree clinicalcasetree = DataBaseClass.getClinicalCaseTree();
-	private List<ClinicalCase> clinicalCaseList = this.parseTree();
-
+	
+	private BinarySearchClinicalTree clinicalcasetree = DataBaseClass.getClinicalCaseTree();
+	
 	public ClinicalCaseService() {
-		clinicalcasetree.insert("Gabriela", new ClinicalCase("Gabriela", "Alejandra", "Gripa"));
-		clinicalcasetree.insert("Gabriel", new ClinicalCase("Gabriel", "Alejandro", "Gripe"));
-		clinicalcasetree.insert("Gabi", new ClinicalCase("Gabi", "Alejo", "Gri"));
-		clinicalcasetree.insert("Ga", new ClinicalCase("Ga", "Ale", "Ge"));
+		
 	}
 
 	public List<ClinicalCase> getAllClinicalCase() {	
 		List<ClinicalCase> lista1 = clinicalcasetree.toArray();
-		List<ClinicalCase> lista2 = new ArrayList<>();
+		List<ClinicalCase> lista2 = new ArrayList<>();				
+
 
 		for (int i = 0; i < lista1.size(); i++) {
-			String[] data = { lista1.get(i).getPatientName(), lista1.get(i).getDoctorName(),
-					lista1.get(i).getDiseases() };
-			lista2.add(new ClinicalCase(data[0], data[1], data[2]));
-		}
+			ClinicalCase case1 = new ClinicalCase();	
+			case1.setPatientName(lista1.get(i).getPatientName());
+			case1.setDoctorName(lista1.get(i).getDoctorName());
+			case1.setDiseases(lista1.get(i).getDiseases());
+			
+			lista2.add(i, case1);
+		}		
 
-		System.out.println(clinicalcasetree.toArray().size());
-
-		return lista2;
+		System.out.println(clinicalcasetree.getSize());
+		return lista2;		
 	}
 
-	public ClinicalCase getClinicalCase(String clinicalCase) {
-		System.out.println(clinicalCase);
-		System.out.println(clinicalCase.length());
-		String hola = "";
-		for (int i = 0; i < clinicalCase.length(); i++) {
-			hola.concat(clinicalCase).charAt(i);
-		}
-		System.out.println(hola + "1");
-		ClinicalCase find = clinicalcasetree.find("Gabi");
-		System.out.println("Gabi".length());
-		System.out.println(find == null);
-		System.out.println(clinicalCase == null);
+	public ClinicalCase getClinicalCase(String clinicalCase) {		
+		ClinicalCase find = clinicalcasetree.find(clinicalCase);	
 		ClinicalCase aux = new ClinicalCase(find.getPatientName(), find.getDoctorName(), find.getDiseases());
-
 		return aux;
 	}
 
@@ -65,19 +51,7 @@ public class ClinicalCaseService {
 		clinicalcasetree.update(clinicalCase.getPatientName(), clinicalCase);
 		return clinicalCase;
 	}
-
-	private List<ClinicalCase> parseTree() {
-		List<ClinicalCase> lista1 = clinicalcasetree.toArray();
-		List<ClinicalCase> lista2 = new ArrayList<>();
-
-		for (int i = 0; i < lista1.size(); i++) {
-			String[] data = { lista1.get(i).getPatientName(), lista1.get(i).getDoctorName(),
-					lista1.get(i).getDiseases() };
-			lista2.add(new ClinicalCase(data[0], data[1], data[2]));
-		}
-
-		return lista2;
-	}
+	
 
 	public void removeClinicalCase(String clinicalCase) {
 		clinicalcasetree.delete(clinicalCase);

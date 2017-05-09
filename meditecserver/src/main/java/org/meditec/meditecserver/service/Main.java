@@ -4,25 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.meditec.meditecserver.model.ClinicalCase;
-import org.meditec.meditecserver.trees.BinarySearchTree;
-import org.meditec.meditecserver.trees.NodeTree;
+import org.meditec.meditecserver.trees.BinarySearchClinicalTree;
 
 public class Main {
 
 	public static void main(String[] args) {
-		BinarySearchTree binarySearch = new BinarySearchTree();
+		BinarySearchClinicalTree binarySearch = new BinarySearchClinicalTree();
 		
 		binarySearch.insert("Gabriela", new ClinicalCase("Gabriela", "Alejandra", "Gripa"));
 		binarySearch.insert("Gabriel", new ClinicalCase("Gabriel", "Alejandro", "Gripe"));
 		binarySearch.insert("Gabi", new ClinicalCase("Gabi", "Alejo", "Gri"));
 		binarySearch.insert("Ga", new ClinicalCase("Ga", "Ale", "Ge"));
+		binarySearch.insert("Ga", new ClinicalCase("Ga", "Ale", "Ge"));
 		
-		for (ClinicalCase case1 : binarySearch.toArray()) {
-			System.out.println(case1.getPatientName());
-		}
+		//binarySearch.update("Ga", new ClinicalCase("Ga", "Alex", "Ge"));
 		
-		for (ClinicalCase case1 : binarySearch.toArray()) {
-			System.out.println(case1.getPatientName());
-		}
+		//binarySearch.inOrderWithoutRecursion();
+		
+		System.out.println(binarySearch.getSize());
+		
+		binarySearch.delete("Gabriela");
+		binarySearch.delete("Ga");
+		binarySearch.delete("Ga");
+		binarySearch.delete("Gabriel");
+		binarySearch.delete("Gabi");
+		
+		System.out.println(binarySearch.getSize());
+		binarySearch.inOrder(binarySearch.getRoot());
+		
 	}
 }
