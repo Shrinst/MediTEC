@@ -24,11 +24,11 @@ public class DoctorResource {
 	private DoctorService profileService = new DoctorService();
 	
 	@GET
-	public List<Doctor> getProfiles(@QueryParam("id") int filter) {
+	public List<Doctor> getProfiles(@QueryParam("id") String filter) {
 		
-//		if (filter > 0) {
-//			return profileService.getAllDoctorPerID(filter);
-//		}
+		if (filter != null) {
+			return profileService.getAllDoctorPerID(filter);
+		}
 		
 		return profileService.getAllProfiles();
 	}

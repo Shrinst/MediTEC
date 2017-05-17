@@ -26,9 +26,9 @@ public class AppointmentResource {
 	@GET
 	public List<Appointment> getProfiles(@QueryParam("id") long filterBean, @QueryParam("patientName") String patientName) {
 		
-		if (filterBean > 0) {
-			return appointmentListService.getAllAppointmentPerID((int) filterBean);
-		}
+//		if (filterBean > 0) {
+//			return appointmentListService.getAllAppointmentPerID((int) filterBean);
+//		}
 		
 		if (patientName != null) {
 			return appointmentListService.getAllAppointmentPerPatient(patientName);
@@ -44,8 +44,8 @@ public class AppointmentResource {
 	
 	@PUT
 	@Path("{appointmentName}")
-	public Appointment updateProfile(@PathParam("appointmentName") String patientName, Appointment appointment) {
-		appointment.setPatientName(patientName);
+	public Appointment updateProfile(@PathParam("appointmentName") int id, Appointment appointment) {
+		appointment.setId(id);
 		return appointmentListService.updateAppointment(appointment);
 	}
 	
@@ -58,7 +58,7 @@ public class AppointmentResource {
 	
 	@GET
 	@Path("{appointmentName}")
-	public Appointment getProfile(@PathParam("appointmentName") String patientName) {
-		return appointmentListService.getAppointment(patientName);
+	public Appointment getProfile(@PathParam("appointmentName") int id) {
+		return appointmentListService.getAppointment(id);
 	}
 }

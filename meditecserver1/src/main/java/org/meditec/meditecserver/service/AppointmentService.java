@@ -9,29 +9,29 @@ import org.meditec.meditecserver.model.Appointment;
 
 public class AppointmentService {
 	
-	private Map<String, Appointment> appointment = DataBaseClass.getAppoinmentList();
+	private Map<Integer, Appointment> appointment = DataBaseClass.getAppoinmentList();
 	
 	public AppointmentService() {
-		appointment.put("Daniela", new Appointment(1L, "Daniela", 1212, "Cartago", "21/4/2018", "Hola!Hola", false));
-		appointment.put("Gabriel", new Appointment(2L, "Gabriel", 1313, "Cartago", "21/3/2018", "Adios!Adios", false));
-		appointment.put("Gabriel", new Appointment(2L, "Gabriela", 1314, "Cartago", "22/3/2018", "Adios!Adios", false));
+		appointment.put(1, new Appointment(1, "Daniela", 1212, "Cartago", "21/4/2018", "Hola!Hola", false));
+		appointment.put(2, new Appointment(2, "Gabriel", 1313, "Cartago", "21/3/2018", "Adios!Adios", false));
+		appointment.put(2, new Appointment(2, "Gabriela", 1314, "Cartago", "22/3/2018", "Adios!Adios", false));
 	}
 	
 	public List<Appointment> getAllAppoinment() {
 		return new ArrayList<Appointment>(appointment.values());
 	}
 	
-	public List<Appointment> getAllAppointmentPerID(int id) {
-		List<Appointment> appointmentID =  new ArrayList<>();
-		
-		for (Appointment appointment : this.appointment.values()) {			
-			if (appointment.getId() == id) {
-				appointmentID.add(appointment);
-			}
-		}
-		
-		return appointmentID;
-	}
+//	public List<Appointment> getAllAppointmentPerID(int id) {
+//		List<Appointment> appointmentID =  new ArrayList<>();
+//		
+//		for (Appointment appointment : this.appointment.values()) {			
+//			if (appointment.getId() == id) {
+//				appointmentID.add(appointment);
+//			}
+//		}
+//		
+//		return appointmentID;
+//	}
 	
 	public List<Appointment> getAllAppointmentPerPatient(String patientName) {
 		List<Appointment> appointmentPatientName =  new ArrayList<>();
@@ -45,12 +45,12 @@ public class AppointmentService {
 		return appointmentPatientName;
 	}
 	
-	public Appointment getAppointment(String patientName) {
-		return appointment.get(patientName);
+	public Appointment getAppointment(int id) {
+		return appointment.get(id);
 	}
 	
 	public Appointment addAppointment(Appointment appointmentList) {		
-		appointment.put(appointmentList.getPatientName(), appointmentList);
+		appointment.put(appointmentList.getId(), appointmentList);
 		return appointmentList;
 	}
 	
@@ -58,7 +58,7 @@ public class AppointmentService {
 		if (appointmentList.getPatientName().isEmpty()) {
 			return null;
 		}
-		appointment.put(appointmentList.getPatientName(), appointmentList);
+		appointment.put(appointmentList.getId(), appointmentList);
 		return appointmentList;
 	}
 	

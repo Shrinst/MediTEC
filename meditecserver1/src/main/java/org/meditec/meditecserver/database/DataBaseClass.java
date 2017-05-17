@@ -17,7 +17,7 @@ public class DataBaseClass {
 	
 	private static Map<Long, Message> messages = new HashMap<>();
 	private static Map<String, Doctor> profiles = new HashMap<>();
-	private static Map<String, Appointment> appoinmentlist = new HashMap<>();
+	private static Map<Integer, Appointment> appoinmentlist = new HashMap<>();
 	private static Map<String, Client> clientlist = new HashMap<>();
 	private static BinarySearchClinicalTree clinialtree = new BinarySearchClinicalTree();	
 	private static BinarySearchMedicineTree medicinetree = new BinarySearchMedicineTree();
@@ -32,7 +32,7 @@ public class DataBaseClass {
 		return profiles;
 	}
 	
-	public static Map<String, Appointment> getAppoinmentList() {
+	public static Map<Integer, Appointment> getAppoinmentList() {
 		return appoinmentlist;
 	}
 	

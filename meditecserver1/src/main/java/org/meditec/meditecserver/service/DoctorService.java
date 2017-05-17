@@ -19,17 +19,17 @@ public class DoctorService {
 		return new ArrayList<Doctor>(profiles.values());
 	}
 	
-//	public List<Doctor> getAllDoctorPerID(long id) {
-//		List<Doctor> doctorList =  new ArrayList<>();
-//		
-//		for (Doctor doctor : this.profiles.values()) {			
-//			if (doctor.getId() == id) {
-//				doctorList.add(doctor);
-//			}
-//		}
-//		
-//		return doctorList;
-//	}
+	public List<Doctor> getAllDoctorPerID(String id) {
+		List<Doctor> doctorList =  new ArrayList<>();
+		
+		for (Doctor doctor : this.profiles.values()) {			
+			if (doctor.getId().equals(id)) {
+				doctorList.add(doctor);
+			}
+		}
+		
+		return doctorList;
+	}
 	
 	public Doctor getProfile(String id) {
 		return profiles.get(id);	
