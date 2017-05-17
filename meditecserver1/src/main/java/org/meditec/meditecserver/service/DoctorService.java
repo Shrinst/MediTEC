@@ -9,29 +9,29 @@ import org.meditec.meditecserver.model.Doctor;
 
 public class DoctorService {
 	
-	private Map<Long, Doctor> profiles = DataBaseClass.getProfiles();
+	private Map<String, Doctor> profiles = DataBaseClass.getProfiles();
 	
 	public DoctorService() {
-		profiles.put(1212L, new Doctor(1212, "TOBE", 0));
+		profiles.put("12AL", new Doctor("12AL", "TOBE", 1));
 	}
 	
 	public List<Doctor> getAllProfiles() {		
 		return new ArrayList<Doctor>(profiles.values());
 	}
 	
-	public List<Doctor> getAllDoctorPerID(long id) {
-		List<Doctor> doctorList =  new ArrayList<>();
-		
-		for (Doctor doctor : this.profiles.values()) {			
-			if (doctor.getId() == id) {
-				doctorList.add(doctor);
-			}
-		}
-		
-		return doctorList;
-	}
+//	public List<Doctor> getAllDoctorPerID(long id) {
+//		List<Doctor> doctorList =  new ArrayList<>();
+//		
+//		for (Doctor doctor : this.profiles.values()) {			
+//			if (doctor.getId() == id) {
+//				doctorList.add(doctor);
+//			}
+//		}
+//		
+//		return doctorList;
+//	}
 	
-	public Doctor getProfile(long id) {
+	public Doctor getProfile(String id) {
 		return profiles.get(id);	
 	}
 	
@@ -48,7 +48,7 @@ public class DoctorService {
 		return profile;
 	}
 	
-	public Doctor removeProfile(long id) {
+	public Doctor removeProfile(String id) {
 		return profiles.remove(id);
 	}
 }

@@ -24,10 +24,14 @@ public class AppointmentResource {
 	private AppointmentService appointmentListService = new AppointmentService();
 	
 	@GET
-	public List<Appointment> getProfiles(@QueryParam("id") long filterBean) {
+	public List<Appointment> getProfiles(@QueryParam("id") long filterBean, @QueryParam("patientName") String patientName) {
 		
 		if (filterBean > 0) {
 			return appointmentListService.getAllAppointmentPerID((int) filterBean);
+		}
+		
+		if (patientName != null) {
+			return appointmentListService.getAllAppointmentPerPatient(patientName);
 		}
 		
 		return appointmentListService.getAllAppoinment();

@@ -7,7 +7,8 @@ public class Appointment {
 	private String patientName;
 	private long id;
 	private String location;
-	private long doctorId;
+	private long Id;
+	private boolean pay;
 	private Appointment _left;
 	private Appointment _right;
 
@@ -15,9 +16,9 @@ public class Appointment {
 
 	}
 
-	public Appointment(long id, String patientName, long doctorId, String location, String date, String symptomps) {
+	public Appointment(long id, String patientName, long Id, String location, String date, String symptomps, boolean pay) {
 		this.id = id;
-		this.doctorId = doctorId;
+		this.Id = Id;
 		this.date = date;
 		this.location = location;
 		this.patientName = patientName;
@@ -81,10 +82,18 @@ public class Appointment {
 	}
 
 	public long getDoctorId() {
-		return doctorId;
+		return Id;
 	}
 
 	public void setDoctorId(long doctorId) {
-		this.doctorId = doctorId;
+		this.Id = doctorId;
+	}
+
+	public boolean isPay() {
+		return pay;
+	}
+
+	public void setPay(boolean pay) {
+		this.pay = pay;
 	}	
 }

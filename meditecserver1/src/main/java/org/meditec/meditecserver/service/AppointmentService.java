@@ -12,9 +12,9 @@ public class AppointmentService {
 	private Map<String, Appointment> appointment = DataBaseClass.getAppoinmentList();
 	
 	public AppointmentService() {
-		appointment.put("Daniela", new Appointment(1L, "Daniela", 1212, "Cartago", "21/4/2018", "Hola!Hola"));
-		appointment.put("Gabriel", new Appointment(2L, "Gabriel", 1313, "Cartago", "21/3/2018", "Adios!Adios"));
-		appointment.put("Gabriel", new Appointment(2L, "Gabriela", 1314, "Cartago", "22/3/2018", "Adios!Adios"));
+		appointment.put("Daniela", new Appointment(1L, "Daniela", 1212, "Cartago", "21/4/2018", "Hola!Hola", false));
+		appointment.put("Gabriel", new Appointment(2L, "Gabriel", 1313, "Cartago", "21/3/2018", "Adios!Adios", false));
+		appointment.put("Gabriel", new Appointment(2L, "Gabriela", 1314, "Cartago", "22/3/2018", "Adios!Adios", false));
 	}
 	
 	public List<Appointment> getAllAppoinment() {
@@ -31,6 +31,18 @@ public class AppointmentService {
 		}
 		
 		return appointmentID;
+	}
+	
+	public List<Appointment> getAllAppointmentPerPatient(String patientName) {
+		List<Appointment> appointmentPatientName =  new ArrayList<>();
+		
+		for (Appointment appointment : this.appointment.values()) {			
+			if (appointment.getPatientName().equals(patientName)) {
+				appointmentPatientName.add(appointment);
+			}
+		}
+		
+		return appointmentPatientName;
 	}
 	
 	public Appointment getAppointment(String patientName) {

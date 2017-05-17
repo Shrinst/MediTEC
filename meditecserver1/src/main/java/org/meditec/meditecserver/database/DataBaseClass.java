@@ -16,7 +16,7 @@ import org.meditec.meditecserver.model.Doctor;
 public class DataBaseClass {
 	
 	private static Map<Long, Message> messages = new HashMap<>();
-	private static Map<Long, Doctor> profiles = new HashMap<>();
+	private static Map<String, Doctor> profiles = new HashMap<>();
 	private static Map<String, Appointment> appoinmentlist = new HashMap<>();
 	private static Map<String, Client> clientlist = new HashMap<>();
 	private static BinarySearchClinicalTree clinialtree = new BinarySearchClinicalTree();	
@@ -28,7 +28,7 @@ public class DataBaseClass {
 		return messages;
 	}
 	
-	public static Map<Long, Doctor> getProfiles() {
+	public static Map<String, Doctor> getProfiles() {
 		return profiles;
 	}
 	

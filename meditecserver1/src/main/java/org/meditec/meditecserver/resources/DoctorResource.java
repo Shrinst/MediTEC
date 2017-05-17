@@ -26,9 +26,9 @@ public class DoctorResource {
 	@GET
 	public List<Doctor> getProfiles(@QueryParam("id") int filter) {
 		
-		if (filter > 0) {
-			return profileService.getAllDoctorPerID(filter);
-		}
+//		if (filter > 0) {
+//			return profileService.getAllDoctorPerID(filter);
+//		}
 		
 		return profileService.getAllProfiles();
 	}
@@ -40,28 +40,21 @@ public class DoctorResource {
 	
 	@PUT
 	@Path("{profileName}")
-	public Doctor updateProfile(@PathParam("profileName") long id, Doctor profile) {
+	public Doctor updateProfile(@PathParam("profileName") String id, Doctor profile) {
 		profile.setId(id);
 		return profileService.updateProfile(profile);
 	}
 	
 	@DELETE
 	@Path("{profileName}")
-	public void deleteProfile(@PathParam("profileName") long id) {
+	public void deleteProfile(@PathParam("profileName") String id) {
 		profileService.removeProfile(id);
 	}
 	
 	
 	@GET
 	@Path("{profileName}")
-	public Doctor getProfile(@PathParam("profileName") long id) {
+	public Doctor getProfile(@PathParam("profileName") String id) {
 		return profileService.getProfile(id);
-	}
-	
-	@GET
-	@Path("{1}/{2}")
-	public String getHola(@PathParam("1") int n1, @PathParam("2") int n2) {
-		return "Hola" + n1 + ";" + n2;
-	}
-	
+	}	
 }
