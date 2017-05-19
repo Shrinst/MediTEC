@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.meditec.meditecserver.model.Message;
+import org.meditec.meditecserver.trees.AVLTreeAppointment;
 import org.meditec.meditecserver.trees.BinarySearchClinicalTree;
 import org.meditec.meditecserver.trees.BinarySearchMedicalTestTree;
 import org.meditec.meditecserver.trees.BinarySearchMedicineTree;
-import org.meditec.meditecserver.model.Appointment;
 import org.meditec.meditecserver.model.Client;
 import org.meditec.meditecserver.model.Diary;
 import org.meditec.meditecserver.model.Doctor;
@@ -17,7 +17,7 @@ public class DataBaseClass {
 	
 	private static Map<Long, Message> messages = new HashMap<>();
 	private static Map<String, Doctor> profiles = new HashMap<>();
-	private static Map<Integer, Appointment> appoinmentlist = new HashMap<>();
+	private static AVLTreeAppointment appoinmentTree = new AVLTreeAppointment();
 	private static Map<String, Client> clientlist = new HashMap<>();
 	private static BinarySearchClinicalTree clinialtree = new BinarySearchClinicalTree();	
 	private static BinarySearchMedicineTree medicinetree = new BinarySearchMedicineTree();
@@ -32,8 +32,8 @@ public class DataBaseClass {
 		return profiles;
 	}
 	
-	public static Map<Integer, Appointment> getAppoinmentList() {
-		return appoinmentlist;
+	public static AVLTreeAppointment getAppointmentTree() {
+		return appoinmentTree;
 	}
 	
 	public static Map<String, Client> getClientList() {

@@ -37,7 +37,7 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 	
 	public MedicalTest getMedicalTest(String patientName) {
 		MedicalTest find = medicaltesttree.find(patientName);	
-		MedicalTest aux = new MedicalTest(find.getId(), find.getPatientName(), find.getDoctorName(), find.getDiseases(),
+		MedicalTest aux = new MedicalTest(find.getPatientName(), find.getType(), find.getResult(),
 												find.getCost());
 		return aux;	
 	}
@@ -48,7 +48,7 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 	}
 	
 	public MedicalTest updateMedicalTest(MedicalTest medicalTest) {
-		if (medicalTest.getId() == 0) {
+		if (medicalTest.getPatientName().isEmpty()) {
 			return null;
 		}
 		medicaltesttree.update(medicalTest.getPatientName(), medicalTest);
@@ -65,12 +65,11 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 
 
 		for (int i = 0; i < lista1.size(); i++) {
-			MedicalTest medicaltest1 = new MedicalTest();	
-			medicaltest1.setId(lista1.get(i).getId());
+			MedicalTest medicaltest1 = new MedicalTest();
 			medicaltest1.setCost(lista1.get(i).getCost());
 			medicaltest1.setPatientName(lista1.get(i).getPatientName());
-			medicaltest1.setDoctorName(lista1.get(i).getDoctorName());
-			medicaltest1.setDiseases(lista1.get(i).getDiseases());
+			medicaltest1.setType(lista1.get(i).getType());
+			medicaltest1.setResult(lista1.get(i).getResult());
 			
 			lista2.add(i, medicaltest1);
 		}

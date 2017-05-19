@@ -19,8 +19,8 @@ public class BinarySearchMedicalTestTree {
 	}
 
 	public void insert(String key, MedicalTest medicalTest) {
-		MedicalTest newNode = new MedicalTest(medicalTest.getId(), medicalTest.getPatientName(),
-				medicalTest.getDoctorName(), medicalTest.getDiseases(), medicalTest.getCost());
+		MedicalTest newNode = new MedicalTest(medicalTest.getPatientName(),
+				medicalTest.getType(), medicalTest.getResult(), medicalTest.getCost());
 
 		if (root == null) {
 			root = newNode;		
@@ -82,11 +82,11 @@ public class BinarySearchMedicalTestTree {
 				return null;
 			}
 		}
-
-		aux.setId(medicalTest.getId());
+		
 		aux.setPatientName(medicalTest.getPatientName());
-		aux.setDoctorName(medicalTest.getDoctorName());
-		aux.setDiseases(medicalTest.getDiseases());
+		aux.setType(medicalTest.getType());
+		aux.setResult(medicalTest.getResult());
+		aux.setCost(medicalTest.getCost());
 
 		return aux;
 	}
@@ -165,15 +165,7 @@ public class BinarySearchMedicalTestTree {
 		}
 
 		return replacement;
-	}
-
-	public void inOrder(MedicalTest node) {
-		if (node != null) {
-			inOrder(node.get_left());
-			System.out.println(node.getId());
-			inOrder(node.get_right());
-		}
-	}	
+	}		
 
 
 	public ArrayList<MedicalTest> toArray() {

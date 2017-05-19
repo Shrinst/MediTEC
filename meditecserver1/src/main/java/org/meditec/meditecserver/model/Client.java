@@ -2,9 +2,7 @@ package org.meditec.meditecserver.model;
 
 public class Client {
 	
-	private String clientName;
-	private int id;
-	private String location;
+	private String clientName;	
 	private String photo;
 	private boolean isRegister;
 	
@@ -12,10 +10,8 @@ public class Client {
 		
 	}
 	
-	public Client(String clientName, int id, String location, String photo, boolean isRegister) {
-		this.clientName = clientName;
-		this.id = id;
-		this.location = location;
+	public Client(String clientName, String photo, boolean isRegister) {
+		this.clientName = clientName;		
 		this.photo = photo;
 		this.isRegister = isRegister;
 	}
@@ -26,23 +22,7 @@ public class Client {
 
 	public void setClientName(String clientName) {
 		this.clientName = clientName;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
+	}	
 
 	public boolean isRegister() {
 		return isRegister;

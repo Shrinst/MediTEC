@@ -50,7 +50,7 @@ public class ClinicalCaseService {
 	public ClinicalCase addClinicalCase(ClinicalCase clinicalCase) {
 		
 		Medicine medicine = new Medicine(clinicalCase.getPatientName(), "No asignado", 0, "No asignado", "No asignado");
-		MedicalTest medicalTest = new MedicalTest(0, clinicalCase.getPatientName(), "No asignado", "No asignado", 0);
+		MedicalTest medicalTest = new MedicalTest(clinicalCase.getPatientName(), "No asignado", "No asignado", 0);
 		
 		medicinetree.insert(medicine.getPatient(), medicine);
 		medicaltesttree.insert(medicalTest.getPatientName(), medicalTest);

@@ -3,7 +3,6 @@ package org.meditec.meditecserver.resources;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -38,7 +37,7 @@ public class AppointmentResource {
 	}
 	
 	@POST
-	public Appointment addProfile(Appointment appointment) {
+	public Appointment addAppoitnment(Appointment appointment) {
 		return appointmentListService.addAppointment(appointment);
 	}
 	
@@ -48,13 +47,6 @@ public class AppointmentResource {
 		appointment.setId(id);
 		return appointmentListService.updateAppointment(appointment);
 	}	
-	
-	@DELETE
-	@Path("{appointmentName}")
-	public void deleteProfile(@PathParam("appointmentName") int patientName) {
-		appointmentListService.removeAppointment(patientName);
-	}
-	
 	
 	@GET
 	@Path("{appointmentName}")

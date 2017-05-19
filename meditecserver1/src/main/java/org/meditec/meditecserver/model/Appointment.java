@@ -1,6 +1,7 @@
 package org.meditec.meditecserver.model;
 
-public class Appointment {
+
+public class Appointment{
 
 	private String symptomps;
 	private String date;
@@ -9,20 +10,44 @@ public class Appointment {
 	private String location;
 	private String doctorId;
 	private boolean pay;
+	private boolean is_Active;
 	private Appointment _left;
 	private Appointment _right;
-
+	private int _depth;
+	
 	public Appointment() {
-
+		
 	}
+	
 
-	public Appointment(int id, String patientName, String doctorId, String location, String date, String symptomps, boolean pay) {
+	public Appointment(String patientName, Appointment left, Appointment right, int id , String doctorId,
+			String location, String date, String symptomps, boolean pay, boolean is_Active) {
 		this.id = id;
 		this.doctorId = doctorId;
 		this.date = date;
 		this.location = location;
 		this.patientName = patientName;
 		this.symptomps = symptomps;
+		this._left = left;
+		this._right = right;
+		this.pay = pay;
+		this.is_Active = is_Active;
+	}
+
+	public boolean isPay() {
+		return pay;
+	}
+
+	public void setPay(boolean pay) {
+		this.pay = pay;
+	}
+
+	public boolean isIs_Active() {
+		return is_Active;
+	}
+
+	public void setIs_Active(boolean is_Active) {
+		this.is_Active = is_Active;
 	}
 
 	public int getId() {
@@ -49,20 +74,20 @@ public class Appointment {
 		this.patientName = patientName;
 	}
 
-	public Appointment get_left() {
+	public Appointment getLeft() {
 		return _left;
 	}
 
-	public void set_left(Appointment _left) {
-		this._left = _left;
+	public void setLeft(Appointment left) {
+		_left = left;
 	}
 
-	public Appointment get_right() {
+	public Appointment getRight() {
 		return _right;
 	}
 
-	public void set_right(Appointment _right) {
-		this._right = _right;
+	public void setRight(Appointment right) {
+		_right = right;
 	}
 
 	public String getSymptomps() {
@@ -87,13 +112,15 @@ public class Appointment {
 
 	public void setDoctorId(String doctorId) {
 		this.doctorId = doctorId;
-	}
-
-	public boolean isPay() {
-		return pay;
-	}
-
-	public void setPay(boolean pay) {
-		this.pay = pay;
 	}	
+	
+	public int getDepth() {
+		return _depth;
+	}
+
+	
+	public void setDepth(int depth) {
+		_depth = depth;
+	}
+	
 }

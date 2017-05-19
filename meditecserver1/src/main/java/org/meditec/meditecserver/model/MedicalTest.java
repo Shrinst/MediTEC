@@ -2,11 +2,10 @@ package org.meditec.meditecserver.model;
 
 public class MedicalTest {	
 	
-	private String patientName;
-	private long id;
-	private long cost;
-	private String doctorName;
-	private String diseases;
+	private String patientName;	
+	private long cost;	
+	private String  type;
+	private String result;
 	private MedicalTest _left;
 	private MedicalTest _right;
 	
@@ -14,14 +13,29 @@ public class MedicalTest {
 		
 	}
 	
-	public MedicalTest(long id, String patientName, String doctorName, String diseases, long cost) {
-		this.id = id;
+	public MedicalTest(String patientName, String type, String result, long cost) {		
 		this.patientName = patientName;
-		this.doctorName = doctorName;
-		this.diseases = diseases;
+		this.type = type;
+		this.result = result;
 		this.cost = cost;
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
 	public String getPatientName() {
 		return patientName;
 	}
@@ -34,26 +48,7 @@ public class MedicalTest {
 
 	public void setCost(long cost) {
 		this.cost = cost;
-	}
-
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getDoctorName() {
-		return doctorName;
-	}
-	public void setDoctorName(String doctorName) {
-		this.doctorName = doctorName;
-	}
-	public String getDiseases() {
-		return diseases;
-	}
-	public void setDiseases(String diseases) {
-		this.diseases = diseases;
-	}
+	}	
 
 	public MedicalTest get_left() {
 		return _left;

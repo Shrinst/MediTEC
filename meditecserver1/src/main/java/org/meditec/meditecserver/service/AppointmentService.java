@@ -2,23 +2,23 @@ package org.meditec.meditecserver.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.meditec.meditecserver.database.DataBaseClass;
 import org.meditec.meditecserver.model.Appointment;
+import org.meditec.meditecserver.trees.AVLTreeAppointment;
 
 public class AppointmentService {
 	
-	private Map<Integer, Appointment> appointment = DataBaseClass.getAppoinmentList();
+	private AVLTreeAppointment appointmentTree = DataBaseClass.getAppointmentTree();
 	
 	public AppointmentService() {
-		appointment.put(1, new Appointment(1, "Daniela", "1212AX", "Cartago", "21/4/2018", "Hola!Hola", false));
-		appointment.put(2, new Appointment(2, "Gabriel", "1A313", "Cartago", "21/3/2018", "Adios!Adios", false));
-		appointment.put(2, new Appointment(2, "Gabriela", "13ew14", "Cartago", "22/3/2018", "Adios!Adios", false));
+
 	}
 	
 	public List<Appointment> getAllAppoinment() {
-		return new ArrayList<Appointment>(appointment.values());
+		
+		System.out.println(this.getList().size());
+		return this.getList();
 	}
 	
 //	public List<Appointment> getAllAppointmentPerID(int id) {
@@ -34,23 +34,29 @@ public class AppointmentService {
 //	}
 	
 	public List<Appointment> getAllAppointmentPerPatient(String patientName) {
-		List<Appointment> appointmentPatientName =  new ArrayList<>();
 		
-		for (Appointment appointment : this.appointment.values()) {			
-			if (appointment.getPatientName().equals(patientName)) {
-				appointmentPatientName.add(appointment);
+		List<Appointment> appointments =  new ArrayList<>();
+		List<Appointment> list = this.getList();
+		
+		for (Appointment appointment1 : list) {			
+			if (appointment1.getPatientName().equals(patientName)) {
+				appointments.add(appointment1);
 			}
 		}
 		
-		return appointmentPatientName;
+		System.out.println(this.getList().size());
+		
+		return appointments;
 	}
 	
 	public Appointment getAppointment(int id) {
-		return appointment.get(id);
+		return appointmentTree.search(id);
 	}	
 	
 	public Appointment addAppointment(Appointment appointmentList) {		
-		appointment.put(appointmentList.getId(), appointmentList);
+		appointmentTree.insert(appointmentList.getId(), appointmentList.getPatientName(), appointmentList.getDoctorId(),
+				appointmentList.getLocation(), appointmentList.getDate(), appointmentList.getSymptomps(), appointmentList.isPay(),
+				appointmentList.isIs_Active());
 		return appointmentList;
 	}
 	
@@ -58,20 +64,37 @@ public class AppointmentService {
 		if (appointmentList.getPatientName().isEmpty()) {
 			return null;
 		}
-		appointment.put(appointmentList.getId(), appointmentList);
+		Appointment appointment = appointmentTree.search(appointmentList.getId());
+		appointment.setPatientName(appointmentList.getPatientName());
+		appointment.setDoctorId(appointmentList.getDoctorId());
+		appointment.setLocation(appointmentList.getLocation());
+		appointment.setDate(appointmentList.getDate());
+		appointment.setSymptomps(appointmentList.getSymptomps());
+		appointment.setPay(appointmentList.isPay());
+		appointment.setIs_Active(appointmentList.isIs_Active());
+		appointmentTree.update(appointmentList.getId(), appointmentList);
 		return appointmentList;
-	}
+	}		
 	
-	public void updateAppointmentPay(int id) {
-		for (Appointment appointment : this.appointment.values()) {
-			if (appointment.getId() == id) {
-				appointment.setPay(true);
-				break;
-			}
-		}		
-	}
-	
-	public Appointment removeAppointment(int appointmentName) {
-		return appointment.remove(appointmentName);
+	private List<Appointment> getList() {
+		List<Appointment> lista1 = appointmentTree.toArray();
+		List<Appointment> lista2 = new ArrayList<>();				
+
+
+		for (int i = 0; i < lista1.size(); i++) {
+			Appointment appointment1 = new Appointment();	
+			appointment1.setId(lista1.get(i).getId());
+			appointment1.setPatientName(lista1.get(i).getPatientName());
+			appointment1.setDoctorId(lista1.get(i).getDoctorId());
+			appointment1.setLocation(lista1.get(i).getLocation());
+			appointment1.setDate(lista1.get(i).getDate());
+			appointment1.setSymptomps(lista1.get(i).getSymptomps());
+			appointment1.setPay(lista1.get(i).isPay());
+			appointment1.setIs_Active(lista1.get(i).isIs_Active());
+			
+			lista2.add(i, appointment1);
+		}	
+		
+		return lista2;
 	}
 }

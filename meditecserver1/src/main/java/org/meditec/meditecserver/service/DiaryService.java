@@ -11,7 +11,7 @@ public class DiaryService {
 	private ArrayList<Diary> diarylist = DataBaseClass.getDiaryList();
 	
 	public DiaryService() {
-			
+		
 	}
 	
 	public List<Diary> getAllDiary() {
