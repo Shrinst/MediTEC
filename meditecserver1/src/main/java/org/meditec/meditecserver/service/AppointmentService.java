@@ -12,9 +12,9 @@ public class AppointmentService {
 	private Map<Integer, Appointment> appointment = DataBaseClass.getAppoinmentList();
 	
 	public AppointmentService() {
-		appointment.put(1, new Appointment(1, "Daniela", 1212, "Cartago", "21/4/2018", "Hola!Hola", false));
-		appointment.put(2, new Appointment(2, "Gabriel", 1313, "Cartago", "21/3/2018", "Adios!Adios", false));
-		appointment.put(2, new Appointment(2, "Gabriela", 1314, "Cartago", "22/3/2018", "Adios!Adios", false));
+		appointment.put(1, new Appointment(1, "Daniela", "1212AX", "Cartago", "21/4/2018", "Hola!Hola", false));
+		appointment.put(2, new Appointment(2, "Gabriel", "1A313", "Cartago", "21/3/2018", "Adios!Adios", false));
+		appointment.put(2, new Appointment(2, "Gabriela", "13ew14", "Cartago", "22/3/2018", "Adios!Adios", false));
 	}
 	
 	public List<Appointment> getAllAppoinment() {
@@ -47,7 +47,7 @@ public class AppointmentService {
 	
 	public Appointment getAppointment(int id) {
 		return appointment.get(id);
-	}
+	}	
 	
 	public Appointment addAppointment(Appointment appointmentList) {		
 		appointment.put(appointmentList.getId(), appointmentList);
@@ -62,7 +62,16 @@ public class AppointmentService {
 		return appointmentList;
 	}
 	
-	public Appointment removeAppointment(String appointmentName) {
+	public void updateAppointmentPay(int id) {
+		for (Appointment appointment : this.appointment.values()) {
+			if (appointment.getId() == id) {
+				appointment.setPay(true);
+				break;
+			}
+		}		
+	}
+	
+	public Appointment removeAppointment(int appointmentName) {
 		return appointment.remove(appointmentName);
 	}
 }

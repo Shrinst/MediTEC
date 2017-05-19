@@ -47,11 +47,11 @@ public class AppointmentResource {
 	public Appointment updateProfile(@PathParam("appointmentName") int id, Appointment appointment) {
 		appointment.setId(id);
 		return appointmentListService.updateAppointment(appointment);
-	}
+	}	
 	
 	@DELETE
 	@Path("{appointmentName}")
-	public void deleteProfile(@PathParam("appointmentName") String patientName) {
+	public void deleteProfile(@PathParam("appointmentName") int patientName) {
 		appointmentListService.removeAppointment(patientName);
 	}
 	
