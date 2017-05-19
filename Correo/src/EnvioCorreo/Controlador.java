@@ -15,8 +15,8 @@ import javax.mail.internet.MimeMultipart;
 
 public class Controlador {
 	
-	Correo c = new Correo();
-	public boolean enviarCorreo(){
+	
+	public boolean enviarCorreo(Correo c){
 		try{
 			Properties p = new Properties();
 			p.put("mail.smtp.host", "smtp.gmail.com");
