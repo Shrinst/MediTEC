@@ -1,5 +1,7 @@
 package org.meditec.meditecserver.trees;
 
+import java.util.ArrayList;
+
 import org.meditec.meditecserver.model.Doctor;
 
 public class SplayTreeDoctor {
@@ -207,6 +209,21 @@ public class SplayTreeDoctor {
 			System.out.println(r.getPoints());
 			inorder(r.getRight());
 		}
+	}
+	
+	public ArrayList<Doctor> toArray() {
+		ArrayList<Doctor> result = new ArrayList<>();
+		toArrayHelp(_root, result);
+		return result;
+	}
+
+	private void toArrayHelp(Doctor ref, ArrayList<Doctor> result) {
+		if (ref == null) {
+			return;
+		}
+		toArrayHelp(ref.getLeft(), result);
+		result.add(ref);
+		toArrayHelp(ref.getRight(), result);
 	}
 
 	public Doctor getRoot() {

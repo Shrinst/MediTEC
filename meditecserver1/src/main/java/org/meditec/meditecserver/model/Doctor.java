@@ -12,12 +12,12 @@ public class Doctor {
 		
 	}
 	
-	public Doctor(String id, Doctor left, Doctor right, String profileName, int points) {
-		this.id = id;
-		this.profileName = profileName;	
-		this.points = points;
-		_left = _right = _parent = null;
-	}
+//	public Doctor(String id, Doctor left, Doctor right, String profileName, int points) {
+//		this.id = id;
+//		this.profileName = profileName;	
+//		this.points = points;
+//		_left = _right = _parent = null;
+//	}
 	
 	public Doctor(String id, String profileName, int points) {
 		this.id = id;

@@ -8,6 +8,8 @@ public class Diary {
 	private Date date;
 	private String text;
 	
+	private Diary next;
+	
 	public Diary() {
 		
 	}
@@ -16,6 +18,7 @@ public class Diary {
 		this.author = author;
 		this.text = text;
 		this.date = new Date();
+		this.next = null;
 	}
 
 	public String getAuthor() {
@@ -40,5 +43,13 @@ public class Diary {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public Diary getNext() {
+		return next;
+	}
+
+	public void setNext(Diary next) {
+		this.next = next;
 	}	
 }

@@ -26,9 +26,9 @@ public class DoctorResource {
 	@GET
 	public List<Doctor> getProfiles(@QueryParam("id") String filter) {
 		
-		if (filter != null) {
-			return profileService.getAllDoctorPerID(filter);
-		}
+//		if (filter != null) {
+//			return profileService.getAllDoctorPerID(filter);
+//		}
 		
 		return profileService.getAllProfiles();
 	}

@@ -1,41 +1,40 @@
 package org.meditec.meditecserver.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.meditec.meditecserver.database.DataBaseClass;
+import org.meditec.meditecserver.lists.DiaryList;
 import org.meditec.meditecserver.model.Diary;
 
 public class DiaryService {
 	
-	private ArrayList<Diary> diarylist = DataBaseClass.getDiaryList();
+	private DiaryList diarylist = DataBaseClass.getDiaryList();
 	
 	public DiaryService() {
 		
 	}
 	
-	public List<Diary> getAllDiary() {
-		return new ArrayList<Diary>(diarylist);
+	public DiaryList getAllDiary() {
+		return diarylist;
 	}
 	
-	public List<Diary> getAllDairyPerAuthor(String author) {
-		List<Diary> diaryList =  new ArrayList<>();
+	public DiaryList getAllDairyPerAuthor(String author) {
+		DiaryList diaryList =  new DiaryList();
 		
-		for (Diary diary : this.diarylist) {			
+		
+		for (Diary diary = this.diarylist.getHead(); diary != null; diary = diary.getNext()) {			
 			if (diary.getAuthor().equals(author)) {
-				diaryList.add(diary);
+				diaryList.insertFirst(diary.getAuthor(), diary.getText());
 			}
 		}
 		
 		return diaryList;
 	}
 	
-	public Diary getDiary(String diary) {
+	public Diary getDiary(String diaryR) {
 		Diary diaryResult = new Diary();
 		
-		for (Diary diary1 : diarylist) {
-			if (diary1.getAuthor().equals(diary)) {
-				diaryResult = diary1;;
+		for (Diary diary = diarylist.getHead(); diary != null; diary = diary.getNext()) {
+			if (diary.getAuthor().equals(diaryR)) {
+				diaryResult = diary;
 			}
 		}
 		
@@ -43,11 +42,11 @@ public class DiaryService {
 	}
 	
 	public Diary addDiary(Diary diary) {		
-		diarylist.add(diary);
+		diarylist.insertFirst(diary.getAuthor(), diary.getText());
 		return diary;
 	}	
 	
 	public void removeDiary(String diary) {
-		diarylist.remove(diary);
+		diarylist.delete(diary);
 	}
 }
