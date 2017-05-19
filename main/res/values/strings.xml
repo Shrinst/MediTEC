@@ -12,8 +12,30 @@
     <string name="register_activity_btn1">Enviar Correo</string>
     <string name="register_activity_btn2">Escanear QR</string>
     <string name="cancel_qr_scan">Concelaste la operación</string>
+    <string name="welcome">Bienvenido: </string>
     <string name="addAppoinment">Agregar Cita Médica</string>
-    <string name="removeAppointment">Eliminar Cita Médica</string>
+    <string name="removeAppointment">Cancelar Cita Médica</string>
     <string name="getAllAppointment">Ver todas las citas</string>
+    <string name="RateDoctor">Calificar Doctor</string>
+    <string name="findDoctorHint">Ingrese el Código del Doctor</string>
+    <string name="findDoctorButton">Buscar</string>
+    <string name="seeDoctorList">Ver lista de doctores</string>
+    <string name="addIDCardHint">Ingrese su cédula</string>
+    <string name="addDateHint">Ingrese la fecha de su cita</string>
+    <string name="addPlaceHint">Ingrese el lugar de su cita</string>
+    <string name="symptompsButtons">Agregar Sintomas</string>
+    <string name="sendAppointment">Enviar</string>
+    <string name="sendAppointmentInfoButton">Enviar</string>
+    <string name="exitAddAppointmentActivity">Salir</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="RatingDoctor">Ingresa el código del doctor</string>
+    <string name="findDoctor">Buscar Doctor</string>
+    <string name="sendDcotorPoint">Enviar Puntaje</string>
+    <string name="Pay">Pagar Cita</string>
+    <string name="getCardHint">Ingrese el número de su tarjeta</string>
+    <string name="getAppointmentHint">Ingrese el ID de la cita</string>
+    <string name="payAppointment">Pagar Cita</string>
+    <string name="cancelAppointmentHint">Ingrese el ID de la cita a eliminar</string>
+    <string name="cancelAppointmentButton">Enviar</string>
 
 </resources>

@@ -8,27 +8,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aguis.meditecclientapp.http.HttpManager;
 import com.example.aguis.meditecclientapp.http.RequestPackage;
+import com.example.aguis.meditecclientapp.mail.MailSend;
 import com.facebook.Profile;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import javax.mail.MessagingException;
+import javax.mail.Transport;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvInfo1, tvInfo2, tvInfo3;
     private Button btnSendMail, btnScanQR;
+    private EditText etEnter_eMail;
     private Typeface typeface;
     private Profile profile = Profile.getCurrentProfile();
+    private MailSend mailSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        mailSend = new MailSend("meditecteam@gmail.com", "AAEVD_Tec2017");
 
         typeface = Typeface.createFromAsset(getAssets(), "Congratulations_DEMO.ttf");
 
@@ -46,13 +55,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         btnScanQR.setTypeface(typeface);
         btnScanQR.setOnClickListener(this);
 
+        etEnter_eMail = (EditText) findViewById(R.id.etEnter_eMail);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnSendMail:
-                Toast.makeText(this, "Hola1", Toast.LENGTH_SHORT).show();
+                mailSend.sendMail(etEnter_eMail.getText().toString());
                 break;
             case R.id.btnScanQR:
                 IntentIntegrator integrator = new IntentIntegrator(this);
@@ -73,7 +84,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             if (result.getContents() == null) {
                 Toast.makeText(this, R.string.cancel_qr_scan, Toast.LENGTH_LONG).show();
             } else {
-                requestData(result.getContents() + "/Gabriela");
+                requestData1(result.getContents() + "/" + profile.getFirstName());
+                requestData2("http://192.168.43.70:8080/meditecserver/webapi/clinicalcaselist");
                 //Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
                 goMainScreen();
             }
@@ -88,13 +100,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         startActivity(intent);
     }
 
-    private void requestData(String uri) {
+    private void requestData1(String uri) {
 
-        String[] attributes = { "clientName", "id", "location", "photo", "register" };
-        String[] values = { "Gabriela", "324553", "Cartago", profile.getProfilePictureUri(200, 200).toString(), "true" };
+        String[] attributes = { "clientName", "photo", "register" };
+        String[] values = { profile.getFirstName(), profile.getProfilePictureUri(200, 200).toString(), "true" };
 
+        Toast.makeText(this, uri, Toast.LENGTH_SHORT);
         RequestPackage requestPackage = new RequestPackage();
         requestPackage.setMethod("PUT");
+        requestPackage.setUri(uri);
+        requestPackage.setMessageAttributes(attributes);
+        requestPackage.setMessageValues(values);
+
+        MyTask task = new MyTask();
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, requestPackage);
+    }
+
+    private void requestData2(String uri) {
+
+        String[] attributes = { "patientName", "medicine", "medicalTest" };
+        String[] values = { profile.getFirstName(), "", "" };
+
+        Toast.makeText(this, uri, Toast.LENGTH_SHORT);
+        RequestPackage requestPackage = new RequestPackage();
+        requestPackage.setMethod("POST");
         requestPackage.setUri(uri);
         requestPackage.setMessageAttributes(attributes);
         requestPackage.setMessageValues(values);
@@ -114,7 +143,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         protected String doInBackground(RequestPackage... params) {
 
             String content = null;
-            content = HttpManager.putData(params[0]);
+
+            switch (params[0].getMethod()) {
+                case "PUT":
+                    content = HttpManager.putData(params[0]);
+                    break;
+
+                case "POST":
+                    content = HttpManager.postData(params[0]);
+                    break;
+            }
 
             return content;
         }

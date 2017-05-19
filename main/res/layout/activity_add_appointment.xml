@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/meditecfondo"
+    tools:context="com.example.aguis.meditecclientapp.AddAppointmentActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tituloagregarcita"
+        android:id="@+id/imageView3" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/findDoctorHint"
+        android:textColorHint="@color/com_facebook_blue"
+        android:id="@+id/etFindDoctor"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnFindDoctor"
+        android:text="@string/findDoctorButton"
+        android:background="@drawable/com_facebook_button_send_background"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSeeDoctors"
+        android:text="@string/seeDoctorList"
+        android:background="@drawable/com_facebook_button_send_background"
+        android:layout_below="@+id/tvdoctorInfo"
+        android:layout_alignRight="@+id/btnFindDoctor"
+        android:layout_alignEnd="@+id/btnFindDoctor" />
+
+    <TextView
+        android:id="@+id/tvdoctorInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/btnFindDoctor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etaddDate"
+        android:hint="@string/addDateHint"
+        android:textColorHint="@color/com_facebook_blue"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/etaddPlace"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etaddPlace"
+        android:hint="@string/addPlaceHint"
+        android:textColorHint="@color/com_facebook_blue"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/etaddDate"
+        android:layout_alignEnd="@+id/etaddDate" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddSymptomps"
+        android:text="@string/symptompsButtons"
+        android:background="@drawable/com_facebook_button_send_background"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/etaddDate"
+        android:layout_toRightOf="@+id/tvdoctorInfo"
+        android:layout_toEndOf="@+id/tvdoctorInfo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvSymptomps"
+        android:textColor="@android:color/black"
+        android:scrollbars="vertical"
+        android:layout_marginRight="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_alignBaseline="@+id/btnAddSymptomps"
+        android:layout_alignBottom="@+id/btnAddSymptomps"
+        android:layout_alignRight="@+id/btnFindDoctor"
+        android:layout_alignEnd="@+id/btnFindDoctor" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSendAppointment"
+        android:text="@string/sendAppointment"
+        android:background="@drawable/com_facebook_button_send_background"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/etaddPlace"
+        android:layout_alignStart="@+id/etaddPlace" />
+
+</RelativeLayout>

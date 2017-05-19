@@ -58,8 +58,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void requestData(String uri) {
 
-        String[] attributes = { "clientName", "id", "location", "photo", "register" };
-        String[] values = { "Gabriela", "324553", "Cartago", profile.getProfilePictureUri(200, 200).toString(), "false" };
+        String[] attributes = { "clientName", "photo", "register" };
+        String[] values = { profile.getFirstName(), profile.getProfilePictureUri(200, 200).toString(), "false" };
 
         RequestPackage requestPackage = new RequestPackage();
         requestPackage.setMethod("POST");
