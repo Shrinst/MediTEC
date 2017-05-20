@@ -4,23 +4,42 @@ import java.util.ArrayList;
 
 import org.meditec.meditecserver.model.Doctor;
 
+/**
+ * 
+ * @author Alejandro
+ *
+ */
 public class SplayTreeDoctor {
 	private Doctor _root;
 
+	/**
+	 * Initializes the tree
+	 */
 	public SplayTreeDoctor() {
 		_root = null;
 	}
 
+	/**
+	 * 
+	 * @return true if the tree has no nodes, else false
+	 */
 	public boolean isEmpty() {
 		return this.getRoot() == null;
 	}
 
+	/**
+	 * Clears the tree, so root = null
+	 */
 	public void clear() {
 		this.setRoot(null);
 	}
 
-	/** function to insert element */
-
+	/**
+	 * Inserts a new node to the tree
+	 * @param data
+	 * @param profileName
+	 * @param points
+	 */
 	public void insert(String data, String profileName, int points) {
 		Doctor z = this.getRoot();
 		Doctor p = null;
@@ -48,8 +67,11 @@ public class SplayTreeDoctor {
 
 	}
 
-	/** rotate **/
-
+	/**
+	 * Rotates the tree
+	 * @param c
+	 * @param p
+	 */
 	public void makeLeftChildParent(Doctor c, Doctor p) {
 		if ((c == null) || (p == null) || (p.getLeft() != c) || (c.getParent() != p)) {
 			throw new RuntimeException("WRONG");
@@ -70,8 +92,11 @@ public class SplayTreeDoctor {
 		c.setRight(p);
 	}
 
-	/** rotate **/
-
+	/**
+	 * Rotates the tree
+	 * @param c
+	 * @param p
+	 */
 	public void makeRightChildParent(Doctor c, Doctor p) {
 		if ((c == null) || (p == null) || (p.getRight() != c) || (c.getParent() != p)) {
 			throw new RuntimeException("WRONG");
@@ -92,7 +117,10 @@ public class SplayTreeDoctor {
 		c.setLeft(p);
 	}
 
-	/** function splay **/
+	/**
+	 * It splays the tree, so the last visited node becomes the root
+	 * @param x
+	 */
 
 	private void Splay(Doctor x) {
 		while (x.getParent() != null) {
@@ -127,13 +155,20 @@ public class SplayTreeDoctor {
 		this.setRoot(x);
 	}
 
-	/** function to remove element **/
+	/**
+	 * Calls a private method to delete a specific node
+	 * @param ele
+	 */
 
 	public void remove(String ele) {
 		Doctor node = this.find(ele);
 		this.remove(node);
 	}
 
+	/**
+	 * Removes a node with an specific element in the tree 
+	 * @param node
+	 */
 	private void remove(Doctor node) {
 		if (node == null) {
 			return;
@@ -164,6 +199,11 @@ public class SplayTreeDoctor {
 		node = null;
 	}
 
+	/**
+	 * Finds a node with an specific data in the tree
+	 * @param ele
+	 * @return the searched node
+	 */
 	public Doctor find(String ele) {
 		Doctor z = this.getRoot();
 		while (z != null) {
@@ -179,6 +219,12 @@ public class SplayTreeDoctor {
 		return null;
 	}
 
+	/**
+	 * Updates a node
+	 * @param key
+	 * @param doctor
+	 * @return the updated node
+	 */
 	public Doctor update(String key, Doctor doctor) {
 		Doctor z = this.getRoot();
 		while (z != null) {
@@ -197,12 +243,18 @@ public class SplayTreeDoctor {
 		return null;
 	}
 
-	/** Function for inorder traversal **/
-
+	
+	/**
+	 * Calls a private methos to print the tree
+	 */
 	public void inorder() {
 		inorder(this.getRoot());
 	}
-
+	
+	/**
+	 * Prints the tree
+	 * @param r
+	 */
 	private void inorder(Doctor r) {
 		if (r != null) {
 			inorder(r.getLeft());
@@ -211,12 +263,21 @@ public class SplayTreeDoctor {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return an array with the nodes of the tree
+	 */
 	public ArrayList<Doctor> toArray() {
 		ArrayList<Doctor> result = new ArrayList<>();
 		toArrayHelp(_root, result);
 		return result;
 	}
 
+	/**
+	 * inserts the nodes of the tree in an array
+	 * @param ref
+	 * @param result
+	 */
 	private void toArrayHelp(Doctor ref, ArrayList<Doctor> result) {
 		if (ref == null) {
 			return;
