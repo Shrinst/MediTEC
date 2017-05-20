@@ -1,0 +1,75 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #C0C0C0;
+}
+p{
+    margin-left: 10%;
+    color: lightskyblue;
+}
+#info{
+        position: absolute;
+	float: left;
+	width: 20%;
+	height: 100%;
+}
+#info a p{
+	color: black;
+	padding: 0px;
+	margin: 0px;
+	padding-left: 15px;
+	height: 60px;
+}
+#info a{
+	text-decoration: none;
+}
+#info a:hover p{
+	background-color: #808080;
+	color: white;
+}
+#info img{
+    margin-top: 20%;
+    margin-left: 20%;
+    padding-bottom: 20%;
+}
+#cases{
+    float: left;
+    background-color: #008080;
+    border-bottom: 5px solid #006060;
+    border-left: 5px solid #006060;
+    width: 79.6%;
+    margin-left: 20%;
+    height: 10%;
+}
+#cases p {
+    margin-left: 40%;
+    font-size: 20px;
+}
+#citas1{
+    float: left;
+    width: 39.6%;
+    margin-left: 20%;
+    border-bottom: 5px solid #006060;
+    border-left: 5px solid #006060;
+    background-color: #008080;
+}
+#citas2{
+    float: left;
+    width: 39.6%;
+    margin-left: 60%;
+    border-bottom: 5px solid #006060;
+    border-left: 5px solid #006060;
+    background-color: #008080;
+}
+#medicina{
+    float: left;
+}
+#examen{
+    float: right;
+}
+form input {
+    visibility: hidden;
+}
+#visible{
+    visibility: visible;
+}

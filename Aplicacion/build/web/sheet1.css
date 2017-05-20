@@ -1,0 +1,34 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #808080;
+}
+#info{
+	background-color: #2D2D2D;
+	float: left;
+	width: 20%;
+	margin-left: 0%;
+	height: 100%;
+}
+#info a p{
+	color: black;
+	padding: 0px;
+	margin: 0px;
+	padding-left: 15px;
+	height: 60px;
+}
+#info a{
+	text-decoration: none;
+}
+#info a:hover p{
+	background-color: #808080;
+	color: red;
+}
+#info img{
+    margin-top: 20%;
+    margin-left: 20%;
+    padding-bottom: 20%;
+}
+#agenda{
+	float: left;
+}

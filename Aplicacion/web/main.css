@@ -1,0 +1,103 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #008080;
+}
+form {
+	visibility: hidden;
+	top: 40%;
+	left: 10%;
+}
+button{
+	visibility: visible;
+	width: 100%;
+	height: 40%;
+	border-radius: 50%;	
+	color: silver;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-color: #A00;
+  	border: 5px solid #900;
+
+}
+#info{
+	background-color: #C0C0C0;
+	position: absolute;
+	float: left;
+	width: 20%;
+	height: 100%;
+}
+#info a p{
+	color: black;
+	padding: 0px;
+	margin: 0px;
+	padding-left: 15px;
+	height: 60px;
+}
+#info a{
+	text-decoration: none;
+}
+#info a:hover p{
+	background-color: #808080;
+	color: white;
+}
+#info img{
+    margin-top: 20%;
+    margin-left: 20%;
+    padding-bottom: 20%;
+}
+#agenda{
+	float: left;
+	margin-left: 20%;
+	width: 40%;
+	height: 50%;
+	position: absolute;
+}
+#agenda:hover button{ 
+	border: 5px solid #006060;
+	color: white;
+}
+#casos{
+	float: left;
+	margin-left: 60%;
+	width: 40%;
+	height: 50%;
+	position: absolute;
+
+}
+#casos:hover button{ 
+	border: 5px solid #006060;
+	color: white;
+}
+#casos:hover #cita{  
+	visibility: visible;
+	margin-left: 10%;
+}
+#citas{
+	float: left;
+	margin-left: 20%;
+	width: 40%;
+	height: 50%;
+	position: absolute;
+	top: 50%;
+}
+#citas:hover button{  
+	border: 5px solid #006060;
+	color: white;
+}
+#citas:hover #cita{  
+	visibility: visible;
+	margin-left: 10%;
+}
+#chat{
+	float: left;
+	margin-left: 60%;
+	width: 40%;
+	height: 50%;
+	position: absolute;
+	top: 50%;
+
+}#chat:hover button{
+	border: 5px solid #006060;
+	color: white;
+}

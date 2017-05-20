@@ -1,0 +1,40 @@
+body{
+	background-color: #2D2D2D;
+	margin: 0px;
+	padding: 0px;
+}
+div {
+    position: absolute;
+    width: 50%;
+    height: 20%;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+#central img{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+#central a #welcome{
+    width: 60%;
+    margin-left: 20%;
+}
+h1{
+    color: silver;
+}
+#acceso{
+   width: 30%;
+   margin-top: 30%;
+   margin-left: 35%;
+}
+#acceso img{
+   float: right;
+   width: 30%;
+   height: 100%;
+}
+#acceso h1{
+   float: left;
+}
+#acceso form{
+   position: absolute;
+}
