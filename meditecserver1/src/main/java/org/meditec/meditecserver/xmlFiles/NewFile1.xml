@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BinaryTree>
+  <Node>
+    <cost>10</cost>
+    <patientName>Noguera</patientName>
+    <type>Gripe</type>
+    <result>Gripe</result>
+  </Node>
+  <Node>
+    <cost>10</cost>
+    <patientName>Isaac</patientName>
+    <type>Gripe</type>
+    <result>Gripe</result>
+  </Node>
+</BinaryTree>

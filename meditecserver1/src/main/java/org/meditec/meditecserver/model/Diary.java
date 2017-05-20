@@ -2,11 +2,12 @@ package org.meditec.meditecserver.model;
 
 import java.util.Date;
 
+
 public class Diary {
 	
 	private String author;
 	private Date date;
-	private String text;
+	private String text;	
 	
 	private Diary next;
 	

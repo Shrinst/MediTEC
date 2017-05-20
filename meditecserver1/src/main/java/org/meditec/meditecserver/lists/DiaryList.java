@@ -1,10 +1,8 @@
 package org.meditec.meditecserver.lists;
 
-import java.util.Iterator;
-
 import org.meditec.meditecserver.model.Diary;
 
-public class DiaryList implements Iterable<Diary> {
+public class DiaryList {
 	
 	private Diary _head;
 	
@@ -49,7 +47,7 @@ public class DiaryList implements Iterable<Diary> {
 	
 	public void deleteLast(){
 		if (!(this.isEmpty())){
-			if (this.lenght()!=1){
+			if (this.len()!=1){
 				Diary temp = _head;
 				while (temp.getNext().getNext()!=null){
 					temp = temp.getNext();
@@ -118,7 +116,7 @@ public class DiaryList implements Iterable<Diary> {
 		}
 	}
 	
-	public int lenght(){
+	public int len(){
 		int cont = 0;
 		Diary temp = _head;
 		while (temp!=null){
@@ -136,11 +134,21 @@ public class DiaryList implements Iterable<Diary> {
 	public void setHead(Diary _head) {
 		this._head = _head;
 	}
-
-	@Override
-	public Iterator<Diary> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
+	public void print(){
+		if (!(this.isEmpty())){
+			Diary temp = this.getHead();
+			while (temp!=null){
+				System.out.println(temp.getAuthor());
+	/*			System.out.println(" ");
+				System.out.println("--> ");*/
+				temp = temp.getNext();
+			}
+		}
+		else{
+			System.out.println("List is empty");
+		}
+	
+
+	}
 }

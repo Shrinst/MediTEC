@@ -17,9 +17,8 @@ public class AppointmentList {
 //Appointment(int id, String patientName, String doctorId, 
 //				String location, String date, String symptomps, boolean pay) {
 
-	public void insertFirst(String patientName, int id, String doctorId, 
-			String location, String date, String symptomps){
-		Appointment newNode = new Appointment(id, patientName, doctorId, location, date, symptomps, false);
+	public void insertFirst(Appointment appointment){
+		Appointment newNode = appointment;
 		if  (!(this.isEmpty())){
 			newNode.set_right(this.getHead());
 			this.setHead(newNode);
@@ -27,9 +26,8 @@ public class AppointmentList {
 		this.setHead(newNode);
 	}
 	
-	public void insertLast(String patientName, int id, String doctorId, 
-			String location, String date, String symptomps){
-		Appointment newNode = new Appointment(id, patientName, doctorId, location, date, symptomps, false);
+	public void insertLast(Appointment appointment){
+		Appointment newNode = appointment;
 		if (!(this.isEmpty())){
 			Appointment temp = _head;
 			while (temp.get_right()!=null){

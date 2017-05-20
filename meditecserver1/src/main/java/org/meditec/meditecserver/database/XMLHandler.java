@@ -1,50 +1,64 @@
 package org.meditec.meditecserver.database;
 
+import java.util.List;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import org.jdom2.Document;
 import org.jdom2.Element;
-import org.jdom2.JDOMException;
 import org.jdom2.Text;
-import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-public class XMLHandler {
+import org.meditec.meditecserver.model.MedicalTest;
 
-	public static void main(String[] args) {
-		readXML();
-	}
+/**
+ * 
+ * @author Emmanuelle
+ *
+ */
+public class XMLHandler {	
 
-	public static void writeXML() {
+	
+	/**
+	 * Get a list of objects and write them into the XML File
+	 * @param medicalTests list of objects 
+	 */
+	
+	public static void writeXML(List<MedicalTest> medicalTests) {
 
 		try {
 
 			Document document = new Document();
 
-			Element theRoot = new Element("tvShow");
+			Element theRoot = new Element("BinaryTree");
 			document.setRootElement(theRoot);
-
-			Element show = new Element("show");
-			Element name = new Element("name");
-
-			name.setAttribute("show_id", "show_002");
-			name.addContent(new Text("Life on Mars"));
-
-			Element network = new Element("network");
-			network.setAttribute("country", "US");
-			network.addContent(new Text("ABC"));
-
-			show.addContent(name);
-			show.addContent(network);
-
-			theRoot.addContent(show);
+			
+			for (MedicalTest medicalTest : medicalTests) {
+				Element node = new Element("Node");
+				
+				
+				Element cost = new Element("cost");
+				cost.addContent(new Text(medicalTest.getCost() + ""));
+				Element patientName = new Element("patientName");
+				patientName.addContent(new Text(medicalTest.getPatientName()));
+				Element type = new Element("type");
+				type.addContent(new Text(medicalTest.getType()));
+				Element result = new Element("result");
+				result.addContent(new Text(medicalTest.getResult()));
+				
+				node.addContent(cost);
+				node.addContent(patientName);
+				node.addContent(type);
+				node.addContent(result);
+				
+				theRoot.addContent(node);			
+				
+			}
 
 			XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 
 			outputter.output(document,
-					new FileOutputStream(new File("./src/main/java/org/meditec/meditecserver/xmlFiles/NewFile.xml")));
+					new FileOutputStream(new File("./src/main/java/org/meditec/meditecserver/xmlFiles/NewFile1.xml")));
 			
 			System.out.println("Wrote to File");
 
@@ -52,37 +66,6 @@ public class XMLHandler {
 			e.printStackTrace();
 		}
 
-	}
-	
-	public static void readXML() {
-		
-		SAXBuilder saxBuilder = new SAXBuilder();
-		
-		try {
-			Document readDocument = saxBuilder.build(new File("./src/main/java/org/meditec/meditecserver/xmlFiles/NewFile.xml"));
-			
-			System.out.println("Root: " + readDocument.getRootElement());
-			
-			System.out.println("Show: " + readDocument.getRootElement().getChild("show").getChildText("name"));
-			
-			System.out.println("Show ID: " + readDocument.getRootElement().getChild("show").getChild("name").getAttributeValue("show_id"));
-			
-			Element root = readDocument.getRootElement();
-			
-			for (Element curEle : root.getChildren("show")) {
-				
-				System.out.println("Show Name: " + curEle.getChildText("name"));
-				
-				System.out.println("Show ID: " + curEle.getChild("name").getAttributeValue("show_id"));
-				
-				System.out.println("On " + curEle.getChildText("network") + " in the ");	
-				
-				System.out.println(curEle.getChild("network").getAttributeValue("country"));
-			}
-			
-		} catch (IOException | JDOMException e) {
-			e.printStackTrace();
-		}
 	}
 
 }

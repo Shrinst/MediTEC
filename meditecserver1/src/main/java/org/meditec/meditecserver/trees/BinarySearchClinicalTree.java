@@ -4,36 +4,19 @@ import java.util.ArrayList;
 
 import org.meditec.meditecserver.model.ClinicalCase;
 
-/**
- * 
- * @author Alejandro
- *
- */
 public class BinarySearchClinicalTree {
 
 	private ClinicalCase root;	
 	private int size;
 
-	/**
-	 * Initialize the tree
-	 */
 	public BinarySearchClinicalTree() {
 		this.root = null;
 	}
 
-	/**
-	 * 
-	 * @return a boolean if the tree is empty or not 
-	 */
 	public boolean isEmpty() {
 		return root == null;
 	}
 
-	/**
-	 * Inserts a new node in the tree
-	 * @param key
-	 * @param clinicalCase
-	 */
 	public void insert(String key, ClinicalCase clinicalCase) {
 		ClinicalCase newNode = new ClinicalCase(clinicalCase.getPatientName(), clinicalCase.getMedicalTest(),
 				clinicalCase.getMedicine());
@@ -66,12 +49,7 @@ public class BinarySearchClinicalTree {
 			}
 		}
 	}
-	
-	/**
-	 * Searches for a node with an specific key
-	 * @param key
-	 * @return the node with the specific key
-	 */
+
 	public ClinicalCase find(String key) {
 		ClinicalCase aux = root;
 
@@ -89,13 +67,6 @@ public class BinarySearchClinicalTree {
 		return aux;
 	}
 
-	/**
-	 * Updates the data of a node
-	 * @param key
-	 * @param clinicalCase
-	 * 
-	 * @return the node with it's updated data
-	 */
 	public ClinicalCase update(String key, ClinicalCase clinicalCase) {
 		ClinicalCase aux = root;
 
@@ -118,11 +89,6 @@ public class BinarySearchClinicalTree {
 		return aux;
 	}
 
-	/**
-	 * Deletes a node of the tree
-	 * @param key
-	 * @return false if there is no node in the tree with the data, true if it finds it
-	 */
 	public boolean delete(String key) {
 		ClinicalCase aux = root;
 		ClinicalCase parent = root;
@@ -183,11 +149,7 @@ public class BinarySearchClinicalTree {
 		}
 		return true;
 	}
-	/**
-	 * 
-	 * @param replacementNode
-	 * @return the replacement node
-	 */
+
 	private ClinicalCase getReplacementNode(ClinicalCase replacementNode) {
 		ClinicalCase parentReplacement = replacementNode;
 		ClinicalCase replacement = replacementNode;
@@ -207,10 +169,6 @@ public class BinarySearchClinicalTree {
 		return replacement;
 	}
 
-	/**
-	 * prints the tree
-	 * @param node
-	 */
 	public void inOrder(ClinicalCase node) {
 		if (node != null) {
 			inOrder(node.get_left());
@@ -219,21 +177,13 @@ public class BinarySearchClinicalTree {
 		}
 	}	
 
-	/**
-	 * 
-	 * @return an array with the nodes of the tree
-	 */
+
 	public ArrayList<ClinicalCase> toArray() {
 		ArrayList<ClinicalCase> result = new ArrayList<>();
 		toArrayHelp(root, result);
 		return result;
 	}
 
-	/**
-	 * Inserts the nodes of the tree in an array
-	 * @param ref
-	 * @param result
-	 */
 	private void toArrayHelp(ClinicalCase ref, ArrayList<ClinicalCase> result) {
 		if (ref == null) {
 			return;
@@ -251,4 +201,3 @@ public class BinarySearchClinicalTree {
 		return size;
 	}
 }
-

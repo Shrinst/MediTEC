@@ -4,36 +4,19 @@ import java.util.ArrayList;
 
 import org.meditec.meditecserver.model.Medicine;
 
-/**
- * 
- * @author Alejandro
- *
- */
 public class BinarySearchMedicineTree {
 	
 	private Medicine root;	
 	private int size;
 
-	/**
-	 * Initializes the tree
-	 */
 	public BinarySearchMedicineTree() {
 		this.root = null;
 	}
 
-	/**
-	 * Looks if the tree is empty
-	 * @return true if the tree is empty, else false
-	 */
 	public boolean isEmpty() {
 		return root == null;
 	}
 
-	/**
-	 * Inserts a new node in the tree
-	 * @param key
-	 * @param medicine
-	 */
 	public void insert(String key, Medicine medicine) {
 		Medicine newNode = new Medicine(medicine.getPatient(), medicine.getName(), medicine.getCost(), medicine.getEffect(),
 				medicine.getSchedule());
@@ -67,11 +50,6 @@ public class BinarySearchMedicineTree {
 		}
 	}
 
-	/**
-	 * Finds an specific node in the tree
-	 * @param key
-	 * @return the node that it's been searched
-	 */
 	public Medicine find(String key) {
 		Medicine aux = root;
 
@@ -89,12 +67,6 @@ public class BinarySearchMedicineTree {
 		return aux;
 	}
 
-	/**
-	 * Updates the data of a node
-	 * @param key
-	 * @param medicine
-	 * @return the node with it's updated data
-	 */
 	public Medicine update(String key, Medicine medicine) {
 		Medicine aux = root;
 
@@ -118,11 +90,6 @@ public class BinarySearchMedicineTree {
 		return aux;
 	}
 
-	/**
-	 * Deletes a node in the tree
-	 * @param key
-	 * @return true if it finds the node, else false
-	 */
 	public boolean delete(String key) {
 		Medicine aux = root;
 		Medicine parent = root;
@@ -180,11 +147,6 @@ public class BinarySearchMedicineTree {
 		return true;
 	}
 
-	/**
-	 * Replaces a node in the tree
-	 * @param replacementNode
-	 * @return the new node
-	 */
 	private Medicine getReplacementNode(Medicine replacementNode) {
 		Medicine parentReplacement = replacementNode;
 		Medicine replacement = replacementNode;
@@ -204,10 +166,6 @@ public class BinarySearchMedicineTree {
 		return replacement;
 	}
 
-	/**
-	 * prints the tree
-	 * @param node
-	 */
 	public void inOrder(Medicine node) {
 		if (node != null) {
 			inOrder(node.get_left());
@@ -216,21 +174,13 @@ public class BinarySearchMedicineTree {
 		}
 	}	
 
-	/**
-	 * 
-	 * @return an array with the nodes of the tree
-	 */
+
 	public ArrayList<Medicine> toArray() {
 		ArrayList<Medicine> result = new ArrayList<>();
 		toArrayHelp(root, result);
 		return result;
 	}
 
-	/**
-	 * Inserts the nodes  of the tree in an array
-	 * @param ref
-	 * @param result
-	 */
 	private void toArrayHelp(Medicine ref, ArrayList<Medicine> result) {
 		if (ref == null) {
 			return;

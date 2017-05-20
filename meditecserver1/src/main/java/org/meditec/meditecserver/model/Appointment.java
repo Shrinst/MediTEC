@@ -14,11 +14,11 @@ public class Appointment{
 	private Appointment _left;
 	private Appointment _right;
 	private int _depth;
+	private Appointment next;
 	
 	public Appointment() {
 		
-	}
-	
+	}	
 
 	public Appointment(String patientName, Appointment left, Appointment right, int id , String doctorId,
 			String location, String date, String symptomps, boolean pay, boolean is_Active) {
@@ -32,6 +32,7 @@ public class Appointment{
 		this._right = right;
 		this.pay = pay;
 		this.is_Active = is_Active;
+		this.next = null;
 	}
 
 	public boolean isPay() {
@@ -121,6 +122,16 @@ public class Appointment{
 	
 	public void setDepth(int depth) {
 		_depth = depth;
+	}
+
+
+	public Appointment get_right() {
+		return next;
+	}
+
+
+	public void set_right(Appointment next) {
+		this.next = next;
 	}
 	
 }

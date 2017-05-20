@@ -11,16 +11,10 @@ public class MedicineService {
 	
 	private BinarySearchMedicineTree medicinetree = DataBaseClass.getMedicineTree();
 	
-	/**
-	 * Constructor
-	 */
 	public MedicineService() {
 	
 	}
-	/**
-	 * 
-	 * @return lista de medicinas
-	 */
+	
 	public List<Medicine> getAllMedicine() {
 		
 		List<Medicine> list = getList();
@@ -28,11 +22,6 @@ public class MedicineService {
 		return list;
 	}
 	
-	/**
-	 * Obtiene todas las medicionas por nombre
-	 * @param medicineName
-	 * @return lista de medicinas
-	 */
 	public List<Medicine> getAllMedicinePerName(String medicineName) {
 		List<Medicine> medicineList =  new ArrayList<>();
 		List<Medicine> list = this.getList();
@@ -46,32 +35,17 @@ public class MedicineService {
 		return medicineList;
 	}
 	
-	/**
-	 * 
-	 * @param medicine
-	 * @return specific medicine
-	 */
 	public Medicine getMedicine(String medicine) {
 		Medicine find = medicinetree.find(medicine);	
 		Medicine aux = new Medicine(find.getPatient(), find.getName(), find.getCost(), find.getEffect(), find.getSchedule());
 		return aux;
 	}
 	
-	/**
-	 * Adds a medicine
-	 * @param medicine
-	 * @return new medicine
-	 */
 	public Medicine addMedicine(Medicine medicine) {		
 		medicinetree.insert(medicine.getPatient(), medicine);
 		return medicine;
 	}
 	
-	/**
-	 * Updates medicine
-	 * @param medicine
-	 * @return medicine updated
-	 */
 	public Medicine updateMedicine(Medicine medicine) {
 		if (medicine.getPatient().isEmpty()) {
 			return null;
@@ -80,18 +54,10 @@ public class MedicineService {
 		return medicine;
 	}
 	
-	/**
-	 * Removes medicine
-	 * @param medicine
-	 */
 	public void removeMedicine(String medicine) {
 		medicinetree.delete(medicine);
 	}
 	
-	/**
-	 * gets list of medicine
-	 * @return list of medicine
-	 */
 	private List<Medicine> getList() {
 		List<Medicine> lista1 = medicinetree.toArray();
 		List<Medicine> lista2 = new ArrayList<>();		

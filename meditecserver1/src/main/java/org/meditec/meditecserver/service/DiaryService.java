@@ -4,12 +4,13 @@ import org.meditec.meditecserver.database.DataBaseClass;
 import org.meditec.meditecserver.lists.DiaryList;
 import org.meditec.meditecserver.model.Diary;
 
-public class DiaryService {
+public class DiaryService {	
+	
 	
 	private DiaryList diarylist = DataBaseClass.getDiaryList();
 	
-	public DiaryService() {
-		
+	public DiaryService() {		
+			
 	}
 	
 	public DiaryList getAllDiary() {
@@ -32,9 +33,10 @@ public class DiaryService {
 	public Diary getDiary(String diaryR) {
 		Diary diaryResult = new Diary();
 		
-		for (Diary diary = diarylist.getHead(); diary != null; diary = diary.getNext()) {
+		for (Diary diary = this.diarylist.getHead(); diary != null; diary = diary.getNext()) {			
 			if (diary.getAuthor().equals(diaryR)) {
 				diaryResult = diary;
+				break;
 			}
 		}
 		
