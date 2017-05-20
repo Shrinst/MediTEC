@@ -4,20 +4,36 @@ import java.util.ArrayList;
 
 import org.meditec.meditecserver.model.MedicalTest;
 
-
+/**
+ * 
+ * @author Alejandro
+ *
+ */
 public class BinarySearchMedicalTestTree {
 	
 	private MedicalTest root;	
 	private int size;
 
+	/**
+	 * Initializes the tree
+	 */
 	public BinarySearchMedicalTestTree() {
 		this.root = null;
 	}
 
+	/**
+	 * 
+	 * @return true if tree is empty, false if it is not empty
+	 */
 	public boolean isEmpty() {
 		return root == null;
 	}
 
+	/**
+	 * Inserts a new node to the tree 
+	 * @param key
+	 * @param medicalTest
+	 */
 	public void insert(String key, MedicalTest medicalTest) {
 		MedicalTest newNode = new MedicalTest(medicalTest.getPatientName(),
 				medicalTest.getType(), medicalTest.getResult(), medicalTest.getCost());
@@ -51,6 +67,11 @@ public class BinarySearchMedicalTestTree {
 		}
 	}
 
+	/**
+	 * Searches for a node with one specific data
+	 * @param key
+	 * @return a node with an specific key
+	 */
 	public MedicalTest find(String key) {
 		MedicalTest aux = root;
 
@@ -68,6 +89,12 @@ public class BinarySearchMedicalTestTree {
 		return aux;
 	}
 
+	/**
+	 * Updates the data of a node
+	 * @param key
+	 * @param medicalTest
+	 * @return the node with it's updated data
+	 */
 	public MedicalTest update(String key, MedicalTest medicalTest) {
 		MedicalTest aux = root;
 
@@ -91,6 +118,11 @@ public class BinarySearchMedicalTestTree {
 		return aux;
 	}
 
+	/**
+	 * Deletes a node of the tree
+	 * @param key
+	 * @return true if it finds the node to delete,  else false
+	 */
 	public boolean delete(String key) {
 		MedicalTest aux = root;
 		MedicalTest parent = root;
@@ -147,7 +179,12 @@ public class BinarySearchMedicalTestTree {
 		}
 		return true;
 	}
-
+	
+	/**
+	 * Replaces a node in the tree
+	 * @param replacementNode
+	 * @return the new node
+	 */
 	private MedicalTest getReplacementNode(MedicalTest replacementNode) {
 		MedicalTest parentReplacement = replacementNode;
 		MedicalTest replacement = replacementNode;
@@ -168,12 +205,21 @@ public class BinarySearchMedicalTestTree {
 	}		
 
 
+	/**
+	 * 
+	 * @return an array with the nodes of the tree
+	 */
 	public ArrayList<MedicalTest> toArray() {
 		ArrayList<MedicalTest> result = new ArrayList<>();
 		toArrayHelp(root, result);
 		return result;
 	}
 
+	/**
+	 * Inserts the nodes of the tree in the array
+	 * @param ref
+	 * @param result
+	 */
 	private void toArrayHelp(MedicalTest ref, ArrayList<MedicalTest> result) {
 		if (ref == null) {
 			return;
@@ -192,3 +238,4 @@ public class BinarySearchMedicalTestTree {
 	}	
 
 }
+
