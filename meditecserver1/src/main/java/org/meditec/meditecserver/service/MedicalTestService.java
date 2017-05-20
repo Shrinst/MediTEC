@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.meditec.meditecserver.database.DataBaseClass;
-import org.meditec.meditecserver.database.XMLHandler;
 import org.meditec.meditecserver.model.MedicalTest;
 import org.meditec.meditecserver.trees.BinarySearchMedicalTestTree;
 
@@ -38,19 +37,18 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 	
 	public MedicalTest getMedicalTest(String patientName) {
 		MedicalTest find = medicaltesttree.find(patientName);	
-		MedicalTest aux = new MedicalTest(find.getPatientName(), find.getType(), find.getResult(),
+		MedicalTest aux = new MedicalTest(find.getId(), find.getPatientName(), find.getDoctorName(), find.getDiseases(),
 												find.getCost());
 		return aux;	
 	}
 	
 	public MedicalTest addMedicalTest(MedicalTest medicalTest) {
 		medicaltesttree.insert(medicalTest.getPatientName(), medicalTest);
-		//XMLHandler.writeXML(getList());
 		return medicalTest;
 	}
 	
 	public MedicalTest updateMedicalTest(MedicalTest medicalTest) {
-		if (medicalTest.getPatientName().isEmpty()) {
+		if (medicalTest.getId() == 0) {
 			return null;
 		}
 		medicaltesttree.update(medicalTest.getPatientName(), medicalTest);
@@ -67,11 +65,12 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 
 
 		for (int i = 0; i < lista1.size(); i++) {
-			MedicalTest medicaltest1 = new MedicalTest();
+			MedicalTest medicaltest1 = new MedicalTest();	
+			medicaltest1.setId(lista1.get(i).getId());
 			medicaltest1.setCost(lista1.get(i).getCost());
 			medicaltest1.setPatientName(lista1.get(i).getPatientName());
-			medicaltest1.setType(lista1.get(i).getType());
-			medicaltest1.setResult(lista1.get(i).getResult());
+			medicaltest1.setDoctorName(lista1.get(i).getDoctorName());
+			medicaltest1.setDiseases(lista1.get(i).getDiseases());
 			
 			lista2.add(i, medicaltest1);
 		}

@@ -1,54 +1,83 @@
 package org.meditec.meditecserver.service;
+/**
+ * 
+ * @author Vinicio
+ * 
+ *
+ */
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.meditec.meditecserver.database.DataBaseClass;
-import org.meditec.meditecserver.lists.DiaryList;
 import org.meditec.meditecserver.model.Diary;
 
-public class DiaryService {	
+public class DiaryService {
 	
+	private ArrayList<Diary> diarylist = DataBaseClass.getDiaryList();
 	
-	private DiaryList diarylist = DataBaseClass.getDiaryList();
-	
-	public DiaryService() {		
+	public DiaryService() {
 			
 	}
 	
-	public DiaryList getAllDiary() {
-		return diarylist;
+	public List<Diary> getAllDiary() {
+		return new ArrayList<Diary>(diarylist);
 	}
+	/**
+	 * Get all the diary
+	 * @return diary list
+	 */
 	
-	public DiaryList getAllDairyPerAuthor(String author) {
-		DiaryList diaryList =  new DiaryList();
+	public List<Diary> getAllDairyPerAuthor(String author) {
+		List<Diary> diaryList =  new ArrayList<>();
 		
-		
-		for (Diary diary = this.diarylist.getHead(); diary != null; diary = diary.getNext()) {			
+		for (Diary diary : this.diarylist) {			
 			if (diary.getAuthor().equals(author)) {
-				diaryList.insertFirst(diary.getAuthor(), diary.getText());
+				diaryList.add(diary);
 			}
 		}
 		
 		return diaryList;
 	}
+	/**
+	 * Get all the dairy per author
+	 * @param patientName
+	 * @return clinicalCases
+	 */
 	
-	public Diary getDiary(String diaryR) {
+	public Diary getDiary(String diary) {
 		Diary diaryResult = new Diary();
 		
-		for (Diary diary = this.diarylist.getHead(); diary != null; diary = diary.getNext()) {			
-			if (diary.getAuthor().equals(diaryR)) {
-				diaryResult = diary;
-				break;
+		for (Diary diary1 : diarylist) {
+			if (diary1.getAuthor().equals(diary)) {
+				diaryResult = diary1;;
 			}
 		}
 		
 		return diaryResult;
 	}
+	/**
+	 * Get all the clinical cases per patient
+	 * @param patientName
+	 * @return clinicalCases
+	 */
 	
 	public Diary addDiary(Diary diary) {		
-		diarylist.insertFirst(diary.getAuthor(), diary.getText());
+		diarylist.add(diary);
 		return diary;
-	}	
+	}
+	/**
+	 * Add a new diary
+	 * @param diary
+	 * @return diary
+	 */	
 	
 	public void removeDiary(String diary) {
-		diarylist.delete(diary);
+		diarylist.remove(diary);
 	}
+	/**
+	 * Remove diary
+	 * @param diary
+	 * @return diarylist
+	 */
 }

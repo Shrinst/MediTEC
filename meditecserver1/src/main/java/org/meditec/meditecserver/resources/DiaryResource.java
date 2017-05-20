@@ -1,6 +1,5 @@
 package org.meditec.meditecserver.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -13,7 +12,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import org.meditec.meditecserver.lists.DiaryList;
 import org.meditec.meditecserver.model.Diary;
 
 import org.meditec.meditecserver.service.DiaryService;
@@ -28,21 +26,11 @@ public class DiaryResource {
 	@GET
 	public List<Diary> getDiarys(@QueryParam("author") String filter) {
 		
-//		if (filter != null) {
-//			return diaryService.getAllDairyPerAuthor(filter);
-//		}
-		
-		List<Diary> lista1 = new ArrayList<Diary>();
-		DiaryList diaryList = diaryService.getAllDiary();
-		Diary diary = diaryList.getHead();
-		
-		while (diary != null) {
-			lista1.add(diary);
-			diary = diary.getNext();
+		if (filter != null) {
+			return diaryService.getAllDairyPerAuthor(filter);
 		}
 		
-		
-		return lista1;
+		return diaryService.getAllDiary();
 	}
 	
 	@POST

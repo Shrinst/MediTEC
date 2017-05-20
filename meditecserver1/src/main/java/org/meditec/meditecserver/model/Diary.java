@@ -1,15 +1,18 @@
 package org.meditec.meditecserver.model;
 
-import java.util.Date;
+/**
+ * 
+ * @author Vinicio
+ *
+ */
 
+import java.util.Date;
 
 public class Diary {
 	
 	private String author;
 	private Date date;
-	private String text;	
-	
-	private Diary next;
+	private String text;
 	
 	public Diary() {
 		
@@ -19,38 +22,58 @@ public class Diary {
 		this.author = author;
 		this.text = text;
 		this.date = new Date();
-		this.next = null;
 	}
+	/**
+	 * Constructor
+	 * @param author, text
+	 * 
+	 */
 
 	public String getAuthor() {
 		return author;
 	}
+	/**
+	 * Get the Author
+	 * @return author
+	 */
 
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	/**
+	 * Set the Author 
+	 * @param author
+	 */
+	
 
 	public Date getDate() {
 		return date;
 	}
+	/**
+	 * Get the date
+	 * @return date
+	 */
 
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	/**
+	 * Set the date
+	 * @param date
+	 */
 
 	public String getText() {
 		return text;
 	}
+	/**
+	 * @return text
+	 */
 
 	public void setText(String text) {
 		this.text = text;
 	}
-
-	public Diary getNext() {
-		return next;
-	}
-
-	public void setNext(Diary next) {
-		this.next = next;
-	}	
+	/**
+	 * Set text
+	 * @param text
+	 */
 }

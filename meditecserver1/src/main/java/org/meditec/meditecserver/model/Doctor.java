@@ -1,73 +1,79 @@
 package org.meditec.meditecserver.model;
 
+/**
+ * 
+ * @author Emmanuelle
+ *
+ */
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Doctor {
 	
-    Doctor _left, _right, _parent;
 	private String id;
-	private String profileName;
-	private int points;	
+	private String profileName;	
+	private int points;
 	
-
+	
 	public Doctor() {
 		
 	}
 	
-//	public Doctor(String id, Doctor left, Doctor right, String profileName, int points) {
-//		this.id = id;
-//		this.profileName = profileName;	
-//		this.points = points;
-//		_left = _right = _parent = null;
-//	}
-	
 	public Doctor(String id, String profileName, int points) {
 		this.id = id;
-		this.profileName = profileName;
-		this.points = points;		
+		this.profileName = profileName;		
+		this.points = points;
 	}
+	/**
+	 * Constructor
+	 * @param id, profileName, points
+	 * 
+	 */
+
 	
 	public String getId() {
 		return id;
 	}
+	/**
+	 * Get the Id
+	 * @return id
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+	/**
+	 * Set the Id 
+	 * @param id
+	 */
 	public String getProfileName() {
 		return profileName;
 	}
+	/**
+	 * Get the profileName
+	 * @return profileName
+	 */
 	public void setProfileName(String profileName) {
 		this.profileName = profileName;
-	}	
-	
-	public Doctor getLeft() {
-		return _left;
 	}
+	/**
+	 * Set the profile name
+	 * @param profileName
+	 */
 
-	public void setLeft(Doctor left) {
-		_left = left;
-	}
-
-	public Doctor getRight() {
-		return _right;
-	}
-
-	public void setRight(Doctor right) {
-		_right = right;
-	}
-
-	public Doctor getParent() {
-		return _parent;
-	}
-
-	public void setParent(Doctor parent) {
-		_parent = parent;
-	}
-	
 	public int getPoints() {
 		return points;
 	}
+	/**
+	 * Get the points
+	 * @return points
+	 */
 
 	public void setPoints(int points) {
 		this.points = points;
 	}
-
+	/**
+	 * Set the points 
+	 * @param points
+	 */
 }

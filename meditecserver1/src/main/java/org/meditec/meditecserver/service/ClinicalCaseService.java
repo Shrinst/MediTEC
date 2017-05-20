@@ -1,5 +1,12 @@
 package org.meditec.meditecserver.service;
 
+/**
+ * 
+ * @author Emmanuelle, David
+ * 
+ *
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +34,10 @@ public class ClinicalCaseService {
 		
 		return list;		
 	}
+	/**
+	 * Get all the clinical cases
+	 * @return list
+	 */
 	
 	public List<ClinicalCase> getAllClinicalCasePerPatient(String patientName) {
 		List<ClinicalCase> clinicalCases =  new ArrayList<>();
@@ -40,17 +51,28 @@ public class ClinicalCaseService {
 		
 		return clinicalCases;
 	}
+	/**
+	 * Get all the clinical cases per patient
+	 * @param patientName
+	 * @return clinicalCases
+	 */
 
 	public ClinicalCase getClinicalCase(String clinicalCase) {		
 		ClinicalCase find = clinicalcasetree.find(clinicalCase);	
 		ClinicalCase aux = new ClinicalCase(find.getPatientName(), find.getMedicalTest(), find.getMedicine());
 		return aux;
 	}
+	/**
+	 * Get a clinical case
+	 * @param clinicalCase
+	 * @return aux
+	 * 
+	 */
 
 	public ClinicalCase addClinicalCase(ClinicalCase clinicalCase) {
 		
 		Medicine medicine = new Medicine(clinicalCase.getPatientName(), "No asignado", 0, "No asignado", "No asignado");
-		MedicalTest medicalTest = new MedicalTest(clinicalCase.getPatientName(), "No asignado", "No asignado", 0);
+		MedicalTest medicalTest = new MedicalTest(0, clinicalCase.getPatientName(), "No asignado", "No asignado", 0);
 		
 		medicinetree.insert(medicine.getPatient(), medicine);
 		medicaltesttree.insert(medicalTest.getPatientName(), medicalTest);
@@ -63,6 +85,12 @@ public class ClinicalCaseService {
 		clinicalcasetree.insert(clinicalCase.getPatientName(), clinicalCase);		
 		return clinicalCase;
 	}
+	/**
+	 * Add a new clinical case}
+	 * @param clinicalCase
+	 * @return clinicalCase
+	 * 
+	 */
 
 	public ClinicalCase updateClinicalCase(ClinicalCase clinicalCase) {
 		if (clinicalCase.getPatientName().isEmpty()) {
@@ -71,6 +99,12 @@ public class ClinicalCaseService {
 		clinicalcasetree.update(clinicalCase.getPatientName(), clinicalCase);
 		return clinicalCase;
 	}
+	/**
+	 * Refresh clinical cases
+	 * @param clinical case
+	 * @return clinicalCase
+	 * 
+	 */
 	
 
 	public void removeClinicalCase(String clinicalCase) {
@@ -78,6 +112,11 @@ public class ClinicalCaseService {
 		medicinetree.delete(clinicalCase);
 		clinicalcasetree.delete(clinicalCase);
 	}
+	/**
+	 * Remove a clinical case
+	 * @param clinicalCase
+	 * 
+	 */
 	
 	private List<ClinicalCase> getList() {
 		List<ClinicalCase> lista1 = clinicalcasetree.toArray();
@@ -95,4 +134,9 @@ public class ClinicalCaseService {
 		
 		return lista2;
 	}
+	/**
+	 * Get the list of clinical case
+	 * @return lista2
+	 * 
+	 */
 }
