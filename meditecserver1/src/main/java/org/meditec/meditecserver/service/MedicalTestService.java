@@ -11,10 +11,17 @@ public class MedicalTestService {
 	
 private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTestTree();
 	
+	/**
+	 * Constructor
+	 */
 	public MedicalTestService() {
 		
 	}
 	
+	/**
+	 * 
+	 * @return list of the medical tests
+	 */
 	public List<MedicalTest> getAllMedicalTest() {	
 		
 		List<MedicalTest> list = getList();
@@ -22,6 +29,11 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 		return list;
 	}
 	
+	/**
+	 * 
+	 * @param patientName
+	 * @return the clinical cases 
+	 */
 	public List<MedicalTest> getAllMedicalServicePerName(String patientName) {
 		List<MedicalTest> clinicalCases =  new ArrayList<>();
 		List<MedicalTest> list = this.getList();
@@ -35,6 +47,11 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 		return clinicalCases;
 	}
 	
+	/**
+	 * 
+	 * @param patientName
+	 * @return the medical test of an specific patient
+	 */
 	public MedicalTest getMedicalTest(String patientName) {
 		MedicalTest find = medicaltesttree.find(patientName);	
 		MedicalTest aux = new MedicalTest(find.getPatientName(), find.getType(), find.getResult(),
@@ -42,11 +59,21 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 		return aux;	
 	}
 	
+	/**
+	 * adds a new medical test of the patient
+	 * @param medicalTest
+	 * @return new medical test
+	 */
 	public MedicalTest addMedicalTest(MedicalTest medicalTest) {
 		medicaltesttree.insert(medicalTest.getPatientName(), medicalTest);
 		return medicalTest;
 	}
 	
+	/**
+	 * Updates a clinical test
+	 * @param medicalTest
+	 * @return the medical test with it's updated data
+	 */
 	public MedicalTest updateMedicalTest(MedicalTest medicalTest) {
 		if (medicalTest.getPatientName().isEmpty()) {
 			return null;
@@ -55,10 +82,18 @@ private BinarySearchMedicalTestTree medicaltesttree = DataBaseClass.getMedicalTe
 		return medicalTest;
 	}
 	
+	/**
+	 * Removes a medical test
+	 * @param patientName
+	 */
 	public void removeMedicalTest(String  patientName) {
 		medicaltesttree.delete(patientName);
 	}
 	
+	/**
+	 * 
+	 * @return the mical test in an array
+	 */
 	private List<MedicalTest> getList() {
 		List<MedicalTest> lista1 = medicaltesttree.toArray();
 		List<MedicalTest> lista2 = new ArrayList<>();		
